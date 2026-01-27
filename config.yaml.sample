@@ -1,0 +1,48 @@
+cloud: all
+types:
+  - cache
+  - cdn
+  - compute
+  - container
+  - database
+  - dns
+  - ebs
+  - filesys
+  - iam
+  - kms
+  - network
+  - notify
+  - queue
+  - slb
+  - storage
+
+# 阿里云配置
+aliyun:
+  profiles: []
+  excludeProfiles: []
+  regions:
+    - us-west-1
+  excludeRegions: []
+  accounts: []
+  excludeAccounts: []
+
+# AWS 配置
+aws:
+  profiles: []
+  excludeProfiles: []
+  regions:
+    - us-west-2
+  excludeRegions: []
+  accounts: []
+  excludeAccounts: []
+  # Resource Explorer 组织视图
+  resourceExplorerViewArn: ""
+
+outputDir: ./output
+logDir: ./logs
+cacheDir: ./.cache
+cacheTtl: 60
+concurrency: 5
+sleepMin: 1
+sleepMax: 3
+logLevel: info
