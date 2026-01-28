@@ -165,6 +165,7 @@ export class SDKProfileAdapter implements ProfileAdapter {
       id: item.resourceId || "", name: item.resourceName || item.resourceId || "",
       region: item.regionId || "global", project: extractProject(tagsArrayToObject(item.tags)),
       tags: tagsArrayToObject(item.tags), status: item.status, collectedAt: new Date(),
+      createdAt: item.createTime || undefined,
     }));
   }
 

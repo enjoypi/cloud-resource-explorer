@@ -9,6 +9,7 @@ export interface Resource {
   project: string;
   tags?: Record<string, string>;
   collectedAt: Date;
+  createdAt?: string; // 资源创建时间
   spec?: string; // 实例规格，如 db.t3.medium, ecs.c6.xlarge
   engine?: string; // 数据库引擎，如 mysql, postgres
   ip?: string;

@@ -230,6 +230,12 @@ export async function collect(input: CollectInput): Promise<CollectOutput> {
     if (result.error) errors.push(result.error);
   }
 
+  const hasElastiCache = resources.some(r => r.cloud === "aws" && r.type.startsWith("elasticache:"));
+  if (hasElastiCache) {
+    const { enrichElastiCacheResources } = await import("../adapters/aws-elasticache-enricher.js");
+    await enrichElastiCacheResources(resources, cacheAdapter, config.cacheTtl, config.forceRefresh);
+  }
+
   log.debug(`采集完成: ${resources.length} 资源, ${errors.length} 错误`);
   return { resources, errors, ssoErrors };
 }

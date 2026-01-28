@@ -9,7 +9,7 @@ export interface CSVAdapter {
 }
 
 export const BOM = "\uFEFF";
-const CSV_HEADERS = ["Cloud", "Profile", "AccountID", "Type", "ResourceID", "Name", "Region", "Project", "Spec", "Engine", "Status", "CollectedAt"];
+const CSV_HEADERS = ["Cloud", "Profile", "AccountID", "Type", "ResourceID", "Name", "Region", "Project", "Spec", "Engine", "Status", "CreatedAt", "CollectedAt"];
 
 export function escapeCSV(value: string): string {
   let safe = value;
@@ -26,30 +26,34 @@ export function writeCSV(filePath: string, headers: string[], rows: string[], la
 function resourceToRow(r: Resource): string {
   return [
     r.cloud, r.profile, r.accountId || "", r.type, r.id, r.name, r.region, r.project,
-    r.spec || "", r.engine || "", r.status || "",
+    r.spec || "", r.engine || "", r.status || "", r.createdAt || "",
     r.collectedAt instanceof Date ? r.collectedAt.toISOString() : String(r.collectedAt),
   ].map(escapeCSV).join(",");
 }
 
+function ensureDir(dir: string) { if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true }); }
+
+function writeResourceCSV(filePath: string, resources: Resource[], label: string) {
+  const rows = resources.map(resourceToRow);
+  fs.writeFileSync(filePath, BOM + CSV_HEADERS.join(",") + "\n" + rows.join("\n"), "utf-8");
+  log.debug(`${label}: ${filePath}, ${rows.length} items`);
+}
+
 export class FileCSVAdapter implements CSVAdapter {
   writeByType(resources: Resource[], outputDir: string): void {
-    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+    ensureDir(outputDir);
     const byType = new Map<string, Resource[]>();
     for (const r of resources) {
       const list = byType.get(r.type);
       if (list) list.push(r); else byType.set(r.type, [r]);
     }
     for (const [type, list] of byType) {
-      const filePath = path.join(outputDir, `${type}.csv`);
-      fs.writeFileSync(filePath, BOM + CSV_HEADERS.join(",") + "\n" + list.map(resourceToRow).join("\n"), "utf-8");
-      log.debug(` CSV write: ${filePath}, ${list.length} items`);
+      writeResourceCSV(path.join(outputDir, `${type}.csv`), list, type);
     }
   }
 
   writeSummary(resources: Resource[], outputDir: string): void {
-    if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
-    const filePath = path.join(outputDir, "summary.csv");
-    fs.writeFileSync(filePath, BOM + CSV_HEADERS.join(",") + "\n" + resources.map(resourceToRow).join("\n"), "utf-8");
-    log.debug(` CSV summary: ${filePath}, ${resources.length} items`);
+    ensureDir(outputDir);
+    writeResourceCSV(path.join(outputDir, "summary.csv"), resources, "summary");
   }
 }

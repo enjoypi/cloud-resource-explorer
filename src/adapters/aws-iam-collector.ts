@@ -6,22 +6,15 @@ import {
   ListAttachedGroupPoliciesCommand, ListGroupPoliciesCommand, GetGroupPolicyCommand,
   GenerateCredentialReportCommand, GetCredentialReportCommand,
 } from "@aws-sdk/client-iam";
-import { fromIni } from "@aws-sdk/credential-providers";
 import type { AWSIAMUserDetail, PolicyDetail, CredentialReportRow } from "../entities/iam-audit.js";
-import { getSSOCredentials, parseAWSSSOSessions } from "./aws-sso.js";
+import { resolveAWSCredentials } from "./aws-client-factory.js";
 import { parsePolicyDocument } from "./iam-audit-utils.js";
 import { log } from "../utils/index.js";
 
 export interface IAMUserFromExplorer { userName: string; userId: string; arn: string; accountId: string; }
 
 export async function createIAMClient(profileName: string, accountId: string): Promise<IAMClient> {
-  let credentials: any;
-  const ssoSession = parseAWSSSOSessions().find(s => s.name === profileName);
-  if (ssoSession) {
-    const ssoCreds = await getSSOCredentials(ssoSession, accountId, ssoSession.roleName || "ReadOnlyAccess");
-    if (ssoCreds) credentials = { accessKeyId: ssoCreds.accessKeyId, secretAccessKey: ssoCreds.secretAccessKey, sessionToken: ssoCreds.sessionToken };
-  }
-  if (!credentials) credentials = fromIni({ profile: profileName });
+  const credentials = await resolveAWSCredentials(profileName, accountId);
   return new IAMClient({ credentials, region: "us-east-1" });
 }
 
