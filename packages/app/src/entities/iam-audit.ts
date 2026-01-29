@@ -1,3 +1,5 @@
+import { IAM_AUDIT } from "../constants.js";
+
 // IAM 审计风险级别
 export type RiskLevel = "HIGH" | "MEDIUM" | "LOW" | "INFO";
 
@@ -149,8 +151,8 @@ export interface IAMAuditConfig {
 }
 
 export const DEFAULT_AUDIT_CONFIG: IAMAuditConfig = {
-  accessKeyMaxAgeDays: 90,
-  accessKeyUnusedDays: 90,
+  accessKeyMaxAgeDays: IAM_AUDIT.DEFAULT_KEY_MAX_AGE_DAYS,
+  accessKeyUnusedDays: IAM_AUDIT.DEFAULT_KEY_UNUSED_DAYS,
   maxDirectPolicies: 3,
-  lastLoginMaxDays: 90,
+  lastLoginMaxDays: IAM_AUDIT.DEFAULT_LAST_LOGIN_DAYS,
 };

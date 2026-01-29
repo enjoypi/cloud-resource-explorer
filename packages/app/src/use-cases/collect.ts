@@ -2,6 +2,7 @@ import type { Config, Resource, Profile, CollectTask, CollectError, CollectError
 import type { ProfileAdapter } from "../adapters/profile-adapter.js";
 import type { CacheAdapter } from "../adapters/cache-adapter.js";
 import { log } from "../utils/index.js";
+import { TIME } from "../constants.js";
 
 export interface CollectInput { config: Config; profileAdapter: ProfileAdapter; cacheAdapter: CacheAdapter; }
 export interface CollectOutput { resources: Resource[]; errors: CollectError[]; ssoErrors: SSOSessionError[]; }
@@ -102,8 +103,8 @@ async function runWithConcurrency<T, R>(
   });
   const release = async (needSleep: boolean) => {
     if (needSleep) {
-      const ms = sleepMin * 1000 + Math.random() * (sleepMax - sleepMin) * 1000;
-      if (ms > 0) { log.debug(`[Rate limit] Sleeping ${(ms/1000).toFixed(1)}s...`); await sleep(ms); }
+      const ms = sleepMin * TIME.MS_PER_SECOND + Math.random() * (sleepMax - sleepMin) * TIME.MS_PER_SECOND;
+      if (ms > 0) { log.debug(`[Rate limit] Sleeping ${(ms / TIME.MS_PER_SECOND).toFixed(1)}s...`); await sleep(ms); }
     }
     running--;
     if (queue.length > 0) queue.shift()!();

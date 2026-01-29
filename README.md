@@ -2,6 +2,15 @@
 
 多云资源采集工具，支持 AWS 和阿里云的资源采集、统计、搜索和 IAM 安全审计。
 
+## 项目结构
+
+```
+cloud-resource-explorer/
+├── packages/
+│   ├── sso-validator/    # SSO 凭证验证独立包
+│   └── app/              # 主应用
+```
+
 ## 功能
 
 - **资源采集** - 自动发现本地 Profile，采集 15 种资源类型（compute, database, storage, network 等）
@@ -18,14 +27,14 @@
 # 安装依赖
 pnpm install
 
-# 构建
+# 构建（包括 sso-validator 和主应用）
 pnpm build
 
 # 复制并编辑配置
-cp config.yaml.sample config.yaml
+cp packages/app/config.yaml.sample packages/app/config.yaml
 
 # 运行（采集所有资源）
-pnpm start
+cd packages/app && pnpm start
 ```
 
 ## 凭证配置

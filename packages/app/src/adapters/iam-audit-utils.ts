@@ -15,7 +15,9 @@ export const ALIYUN_DANGEROUS_ACTIONS = [
   "rds:DeleteDBInstance", "fc:*", "kms:Decrypt", "kms:*",
 ];
 
-export const DAY_MS = 1000 * 60 * 60 * 24;
+import { TIME } from "../constants.js";
+
+export const DAY_MS = TIME.MS_PER_DAY;
 export function daysSince(date: Date, now = new Date()): number {
   return Math.floor((now.getTime() - date.getTime()) / DAY_MS);
 }

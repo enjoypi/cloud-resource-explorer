@@ -1,5 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { TIME } from "../constants.js";
 import { log } from "../utils/index.js";
 
 export interface CacheAdapter {
@@ -60,7 +61,7 @@ export class FileCacheAdapter implements CacheAdapter {
     if (!fs.existsSync(filePath)) return false;
     try {
       const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-      const valid = Date.now() - (data.timestamp || 0) < ttl * 60 * 1000;
+      const valid = Date.now() - (data.timestamp || 0) < ttl * TIME.MS_PER_MINUTE;
       log.debug(` Cache validity: ${filePath}, ttl=${ttl}min, valid=${valid}`);
       return valid;
     } catch { return false; }

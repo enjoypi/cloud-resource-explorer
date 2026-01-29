@@ -2,6 +2,7 @@ import type { Config, Profile, CollectTask } from "../entities/index.js";
 import type { ProfileAdapter } from "../adapters/profile-adapter.js";
 import { log } from "../utils/index.js";
 import { generateTasks, expandTypes, initProfilesAndRegions, createRegionGetter } from "./collect.js";
+import { UI } from "../constants.js";
 
 export interface CountInput { config: Config; profileAdapter: ProfileAdapter; viewArn?: string; }
 export interface TypeCount { type: string; resourceType: string; count: number; complete: boolean; }
@@ -34,7 +35,7 @@ export async function countResources(input: CountInput): Promise<CountOutput> {
 
 export function printCountSummary(output: CountOutput): void {
   console.log("\n资源数量统计：");
-  console.log("─".repeat(60));
+  console.log("─".repeat(UI.SEPARATOR_WIDTH));
 
   const byType = new Map<string, number>();
   for (const result of output.results) {
@@ -42,9 +43,9 @@ export function printCountSummary(output: CountOutput): void {
   }
 
   for (const [type, count] of [...byType.entries()].sort((a, b) => b[1] - a[1])) {
-    console.log(`  ${type.padEnd(40)} ${count}`);
+    console.log(`  ${type.padEnd(UI.TYPE_COLUMN_WIDTH)} ${count}`);
   }
 
-  console.log("─".repeat(60));
+  console.log("─".repeat(UI.SEPARATOR_WIDTH));
   console.log(`  总计: ${output.grandTotal} 个资源\n`);
 }

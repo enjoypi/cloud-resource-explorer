@@ -4,8 +4,10 @@ import type { IAMAuditConfig } from "../entities/iam-audit.js";
 
 export const VERSION = "1.0.0";
 
-const MAX_LIST_SIZE = 100;
-function parseList(value: string | undefined, maxSize = MAX_LIST_SIZE): string[] {
+import { CLI, IAM_AUDIT, CACHE } from "../constants.js";
+
+const MAX_LIST_SIZE = CLI.MAX_LIST_SIZE;
+function parseList(value: string | undefined, maxSize: number = MAX_LIST_SIZE): string[] {
   if (typeof value !== "string") return [];
   const items = value.split(",").map(s => s.trim()).filter(Boolean);
   if (items.length > maxSize) throw new Error(`参数数量超过限制 (最大 ${maxSize})`);
@@ -47,9 +49,9 @@ Options:
   IAM 审计选项:
   --iam-audit             运行 IAM 安全审计
   --iam-fast              极速审计（仅统计用户，不获取详细数据）
-  --audit-key-age <days>  AccessKey 最大年龄天数 (default: 90)
-  --audit-unused <days>   AccessKey 未使用天数阈值 (default: 90)
-  --audit-login <days>    最后登录时间阈值 (default: 90)
+  --audit-key-age <days>  AccessKey 最大年龄天数 (default: ${IAM_AUDIT.DEFAULT_KEY_MAX_AGE_DAYS})
+  --audit-unused <days>   AccessKey 未使用天数阈值 (default: ${IAM_AUDIT.DEFAULT_KEY_UNUSED_DAYS})
+  --audit-login <days>    最后登录时间阈值 (default: ${IAM_AUDIT.DEFAULT_LAST_LOGIN_DAYS})
 
   通用选项:
   --search <query>        搜索资源 (IP、名称、ARN 等)
@@ -57,7 +59,7 @@ Options:
   --output <dir>          输出目录 (default: ./output)
   --log-dir <dir>         日志目录 (default: ./logs)
   --cache-dir <dir>       缓存目录 (default: ./.cache)
-  --cache-ttl <min>       缓存有效期，分钟 (default: 60)
+  --cache-ttl <min>       缓存有效期，分钟 (default: ${CACHE.DEFAULT_TTL_MINUTES})
   --force-refresh, -f     强制刷新，忽略缓存
   --concurrency <n>       并发数 (default: 5)
   --log-level <level>     日志级别: trace, debug, info, warn, error (default: info)

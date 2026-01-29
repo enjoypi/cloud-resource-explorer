@@ -1,10 +1,18 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as os from "node:os";
+import { PAGINATION, TIMEOUT } from "../constants.js";
 import { execSync } from "node:child_process";
 import * as CredentialModule from "@alicloud/credentials";
 import { Config as OpenApiConfig } from "@alicloud/openapi-client";
 import { log } from "../utils/index.js";
+import { 
+  validateAliyunCredential as validate,
+  type ValidationResult
+} from "@cloud-explorer/sso-validator/aliyun";
+
+export type CredentialValidation = ValidationResult;
+export const validateAliyunCredential = validate;
 
 const Credential = (CredentialModule.default as any).default || CredentialModule.default;
 const CredentialConfig = (CredentialModule as any).Config;
@@ -40,7 +48,7 @@ export function getAliyunProfiles(): AliyunProfile[] {
 function getCloudSSOCredential(profileName: string): CloudSSOCredential | null {
   try {
     const safeName = sanitizeProfileName(profileName);
-    const config = JSON.parse(execSync(`aliyun configure get --profile ${safeName}`, { encoding: "utf-8", timeout: 10000 }));
+    const config = JSON.parse(execSync(`aliyun configure get --profile ${safeName}`, { encoding: "utf-8", timeout: TIMEOUT.ALIYUN_CLI }));
     if (config.mode === "CloudSSO" && config.access_key_id && config.access_key_secret && config.sts_token) {
       log.debug(` CloudSSO credential found for ${profileName}`);
       return {
@@ -55,39 +63,6 @@ function getCloudSSOCredential(profileName: string): CloudSSOCredential | null {
     log.debug(` Failed to get CloudSSO credential for ${profileName}:`, e);
     return null;
   }
-}
-
-export interface CredentialValidation {
-  profile: string;
-  valid: boolean;
-  expiredAt?: Date;
-  refreshCommand?: string;
-}
-
-export function validateAliyunCredential(profileName: string): CredentialValidation {
-  const result: CredentialValidation = { profile: profileName, valid: false };
-  try {
-    const safeName = sanitizeProfileName(profileName);
-    const config = JSON.parse(execSync(`aliyun configure get --profile ${safeName}`, { encoding: "utf-8", timeout: 10000 }));
-    if (config.mode === "CloudSSO") {
-      if (!config.access_key_id || !config.sts_token) {
-        result.refreshCommand = `aliyun configure --mode CloudSSO --profile ${profileName}`;
-        return result;
-      }
-      if (config.sts_expiration) {
-        const expiredAt = new Date(config.sts_expiration * 1000);
-        result.expiredAt = expiredAt;
-        if (expiredAt < new Date()) {
-          result.refreshCommand = `aliyun configure --mode CloudSSO --profile ${profileName}`;
-          return result;
-        }
-      }
-    }
-    result.valid = true;
-  } catch {
-    result.refreshCommand = `aliyun configure --mode CloudSSO --profile ${profileName}`;
-  }
-  return result;
 }
 
 export async function createAliyunConfig(profileName: string, regionId: string): Promise<OpenApiConfig | null> {

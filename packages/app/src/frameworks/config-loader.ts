@@ -2,6 +2,7 @@ import * as fs from "node:fs";
 import { parse as parseYaml } from "yaml";
 import type { Config, ProviderConfig } from "../entities/index.js";
 import { log } from "../utils/index.js";
+import { CACHE } from "../constants.js";
 
 export interface ConfigLoader {
   load(yamlPath: string, cliArgs: Partial<Config>): Config;
@@ -24,7 +25,7 @@ const DEFAULT_CONFIG: Config = {
   outputDir: "./output",
   logDir: "./logs",
   cacheDir: "./.cache",
-  cacheTtl: 60,
+  cacheTtl: CACHE.DEFAULT_TTL_MINUTES,
   forceRefresh: false,
   concurrency: 5,
   sleepMin: 1,

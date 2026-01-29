@@ -1,0 +1,23 @@
+{
+  "name": "@cloud-explorer/sso-validator",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./aws": "./dist/aws.js",
+    "./aliyun": "./dist/aliyun.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sso": "^3.0.0",
+    "@alicloud/credentials": "^2.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^2.0.0"
+  }
+}

@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { YamlConfigLoader } from "./config-loader.js";
 import { parseCliArgs, printHelp, VERSION } from "./cli-parser.js";
 import { SDKProfileAdapter } from "../adapters/profile-adapter.js";
@@ -16,6 +15,7 @@ import { validateAliyunCredential } from "../adapters/aliyun-credentials.js";
 import { validateAWSSSOSession } from "../adapters/aws-sso.js";
 import type { Config } from "../entities/index.js";
 import type { IAMAuditConfig } from "../entities/iam-audit.js";
+import { TIME, UI } from "../constants.js";
 
 async function validateCredentials(config: Config): Promise<boolean> {
   const invalidCredentials: string[] = [];
@@ -57,7 +57,7 @@ async function runIAMAuditMode(config: Config, profileAdapter: SDKProfileAdapter
     writeIAMAuditReport(results, `${config.outputDir}/iam-audit`);
     printAuditSummary(results);
   } else log.warn("没有完成任何账号的审计");
-  log.info(`IAM 审计完成，耗时 ${((Date.now() - startTime) / 1000).toFixed(2)}s，发现 ${totalFindings} 个风险项`);
+  log.info(`IAM 审计完成，耗时 ${((Date.now() - startTime) / TIME.MS_PER_SECOND).toFixed(2)}s，发现 ${totalFindings} 个风险项`);
 }
 
 const SENSITIVE_KEYS = ["password", "secret", "key", "token", "credential", "auth"];
@@ -76,7 +76,7 @@ async function runSearch(config: Config, searchQuery: string): Promise<void> {
   if (results.length === 0) { log.info("未找到匹配的资源"); return; }
   console.log(`\n找到 ${results.length} 个资源:\n`);
   for (const r of results) {
-    console.log(`  ${r.resourceType.padEnd(35)} ${r.region.padEnd(15)} ${r.accountId}`);
+    console.log(`  ${r.resourceType.padEnd(UI.RESOURCE_TYPE_COLUMN_WIDTH)} ${r.region.padEnd(UI.REGION_COLUMN_WIDTH)} ${r.accountId}`);
     console.log(`    ARN: ${r.arn}`);
     const ipProps = Object.entries(r.properties).filter(([k, v]) =>
       typeof v === "string" && !isSensitiveKey(k) && (v.includes(searchQuery) || k.toLowerCase().includes("ip")));
@@ -112,7 +112,7 @@ async function main(): Promise<void> {
     for (const e of errors) log.error(`${e.task.profile.name}/${e.task.type}/${e.task.region}: ${e.message}`);
   }
   await exportResources({ resources, csvAdapter, logAdapter, outputDir: config.outputDir });
-  log.info(`采集完成，耗时 ${((Date.now() - startTime) / 1000).toFixed(2)}s，共 ${resources.length} 个资源`);
+  log.info(`采集完成，耗时 ${((Date.now() - startTime) / TIME.MS_PER_SECOND).toFixed(2)}s，共 ${resources.length} 个资源`);
 }
 
 main().catch((e) => {
