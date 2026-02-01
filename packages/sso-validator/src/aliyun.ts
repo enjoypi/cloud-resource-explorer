@@ -13,9 +13,9 @@ function sanitizeProfileName(name: string): string {
 }
 
 export function validateAliyunCredential(profileName: string): ValidationResult {
+  const safeName = sanitizeProfileName(profileName);
   const result: ValidationResult = { profile: profileName, valid: false };
   try {
-    const safeName = sanitizeProfileName(profileName);
     const config = JSON.parse(execSync(`aliyun configure get --profile ${safeName}`, { encoding: "utf-8", timeout: 10000 }));
     if (config.mode === "CloudSSO") {
       if (!config.access_key_id || !config.sts_token) {
