@@ -1,50 +1,60 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+==================
+Version: 0.0.0 → 1.0.0 (MAJOR: 初始化项目宪法)
+Added Principles:
+  - I. TypeScript 优先
+  - II. 简洁至上
+  - III. 可观测性
+Added Sections:
+  - 技术栈约束
+  - 开发工作流
+Templates: 待同步
+-->
+
+# Cloud Resource Explorer Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. TypeScript 优先
+- MUST 使用 TypeScript 编写所有代码
+- MUST 使用 `pnpm` 作为包管理器
+- MUST 使用 `deno` 直接执行 TypeScript（开发阶段无需构建）
+- MUST 确保编译通过后再提交代码
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. 简洁至上
+- MUST 函数不超过 64 行，文件不超过 256 行
+- MUST 遵循 SRP, OCP, DIP, DRY, KISS, YAGNI 原则
+- MUST 高内聚低耦合：单一模块专注单一职责，通过抽象隔离变更
+- SHOULD 注释仅用于复杂业务逻辑、算法或 Trick
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. 可观测性
+- MUST 在关键路径添加 DEBUG 级别日志
+- MUST 使用结构化日志（pino）
+- MUST 错误输出到 stderr，正常输出到 stdout
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+## 技术栈约束
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+| 类别 | 选择 |
+|------|------|
+| 语言 | TypeScript + ESM |
+| 包管理 | pnpm |
+| 运行时 | deno（开发）/ Node.js（生产） |
+| 测试 | vitest |
+| 日志 | pino |
+| 配置 | YAML |
+| 架构 | Clean Architecture |
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## 开发工作流
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- CLI 命令 MUST 支持非交互模式（`-y`, `--yes`, `--force`, `--quiet`）
+- 文档和注释 MUST 使用中文 (zh-CN)
+- 非必要不生成文档，禁止废话与重复内容
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- 宪法优先于所有其他实践
+- 修订需要文档记录和迁移计划
+- 所有 PR/Review 必须验证合规性
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-02-01 | **Last Amended**: 2026-02-01
