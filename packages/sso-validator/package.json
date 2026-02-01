@@ -1,15 +1,46 @@
 {
   "name": "@cloud-explorer/sso-validator",
   "version": "1.0.0",
+  "description": "多云 SSO 凭证验证工具，支持 AWS SSO 和阿里云 CloudSSO",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./aws": "./dist/aws.js",
-    "./aliyun": "./dist/aliyun.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./aws": {
+      "types": "./dist/aws.d.ts",
+      "import": "./dist/aws.js"
+    },
+    "./aliyun": {
+      "types": "./dist/aliyun.d.ts",
+      "import": "./dist/aliyun.js"
+    }
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "vitest",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "aws",
+    "aliyun",
+    "sso",
+    "credential",
+    "validator"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/cloud-resource-explorer.git",
+    "directory": "packages/sso-validator"
   },
   "dependencies": {
     "@aws-sdk/client-sso": "^3.0.0",
@@ -19,5 +50,8 @@
     "@types/node": "^25.0.0",
     "typescript": "^5.0.0",
     "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
