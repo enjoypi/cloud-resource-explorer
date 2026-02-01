@@ -1,6 +1,7 @@
 import type { Resource } from "../entities/index.js";
 import { createAliyunConfig } from "./aliyun-credentials.js";
 import { log, logAliyunAuthError } from "../utils/index.js";
+import { PAGINATION } from "../constants.js";
 
 export interface RDAccount {
   accountId: string;
@@ -24,7 +25,7 @@ export async function collectAliyunRDAccounts(profileName: string): Promise<Reso
     const accounts: RDAccount[] = [];
     let pageNumber = 1;
     while (true) {
-      const resp = await client.listAccounts(new ListAccountsRequest({ pageNumber, pageSize: 100 }));
+      const resp = await client.listAccounts(new ListAccountsRequest({ pageNumber, pageSize: PAGINATION.PAGE_SIZE }));
       const items = resp.body?.accounts?.account || [];
       for (const a of items as any[]) {
         accounts.push({
@@ -32,7 +33,7 @@ export async function collectAliyunRDAccounts(profileName: string): Promise<Reso
           joinMethod: a.joinMethod || "", joinTime: a.joinTime || "", status: a.status || "", type: a.type || "",
         });
       }
-      if (items.length < 100) break;
+      if (items.length < PAGINATION.PAGE_SIZE) break;
       pageNumber++;
     }
     log.debug(` RD Accounts ${profileName}: ${accounts.length}`);

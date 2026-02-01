@@ -2,6 +2,7 @@ import { ResourceExplorer2Client, ListResourcesCommand, SearchCommand } from "@a
 import { log } from "../utils/index.js";
 import { resolveAWSCredentials } from "./aws-client-factory.js";
 import { extractProject } from "./profile-adapter.js";
+import { PAGINATION } from "../constants.js";
 
 const AWS_RESOURCE_TYPE_MAP: Record<string, string[]> = {
   compute: ["ec2:instance", "ecs:service", "ecs:cluster", "ecs:task-definition", "lambda:function"],
@@ -46,7 +47,7 @@ export async function searchAWSResourcesByIP(
     const client = await createExplorerClient(profileName, accountId, viewArn);
     let nextToken: string | undefined;
     do {
-      const resp = await client.send(new SearchCommand({ QueryString: ip, ViewArn: viewArn, MaxResults: 100, NextToken: nextToken }));
+      const resp = await client.send(new SearchCommand({ QueryString: ip, ViewArn: viewArn, MaxResults: PAGINATION.MAX_RESULTS, NextToken: nextToken }));
       for (const r of resp.Resources || []) {
         const props: Record<string, any> = {};
         for (const p of r.Properties || []) props[p.Name || ""] = p.Data;
@@ -94,7 +95,7 @@ export async function collectAWSResourcesByExplorer(
         if (region !== "global" && !viewArn) filterString += ` region:${region}`;
         let nextToken: string | undefined;
         do {
-          const resp = await client.send(new ListResourcesCommand({ Filters: { FilterString: filterString }, MaxResults: 100, NextToken: nextToken, ViewArn: viewArn }));
+          const resp = await client.send(new ListResourcesCommand({ Filters: { FilterString: filterString }, MaxResults: PAGINATION.MAX_RESULTS, NextToken: nextToken, ViewArn: viewArn }));
           const items = resp.Resources || [];
           rawItems.push(...items);
           nextToken = resp.NextToken;

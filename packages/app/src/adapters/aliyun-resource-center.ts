@@ -1,6 +1,7 @@
 import * as $ResourceCenter20221201 from '@alicloud/resourcecenter20221201';
 import { log, logAliyunAuthError } from "../utils/index.js";
 import { createAliyunConfig } from "./aliyun-credentials.js";
+import { PAGINATION } from "../constants.js";
 
 const RESOURCE_TYPE_MAP: Record<string, string[]> = {
   compute: ["ACS::ECS::Instance", "ACS::ECI::ContainerGroup", "ACS::SWAS::Instance", "ACS::ECP::Instance"],
@@ -54,7 +55,7 @@ export async function collectAliyunResourcesByCenter(
   const rawItems: any[] = [];
   for (const resourceType of resourceTypes) {
     try {
-      const request = new $ResourceCenter20221201.SearchResourcesRequest({ resourceTypes: [resourceType], maxResults: 100 });
+      const request = new $ResourceCenter20221201.SearchResourcesRequest({ resourceTypes: [resourceType], maxResults: PAGINATION.MAX_RESULTS });
       if (region !== "global") request.regions = [region];
       let nextToken: string | undefined;
       do {
@@ -82,7 +83,7 @@ export async function collectMultiAccountResourcesByCenter(
   for (const resourceType of resourceTypes) {
     try {
       const request = new $ResourceCenter20221201.SearchMultiAccountResourcesRequest({
-        scope: resourceDirectoryId, resourceTypes: [resourceType], maxResults: 100,
+        scope: resourceDirectoryId, resourceTypes: [resourceType], maxResults: PAGINATION.MAX_RESULTS,
       });
       if (region !== "global") request.regions = [region];
       log.debug(`RC 请求：scope=${resourceDirectoryId}, type=${resourceType}, region=${region}`);

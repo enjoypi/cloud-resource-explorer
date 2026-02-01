@@ -2,6 +2,7 @@ import type { AliyunRAMUserDetail, IAMAuditConfig, IAMRiskFinding, PolicyDetail,
 import { createAliyunConfig } from "./aliyun-credentials.js";
 import { parsePolicyDocument, hasAdminAccess, findDangerousActions, findWildcardResources, ALIYUN_DANGEROUS_ACTIONS, daysSince, createFinding } from "./iam-audit-utils.js";
 import { log } from "../utils/index.js";
+import { PAGINATION } from "../constants.js";
 
 let ramModule: any = null;
 async function getRAMModule() {
@@ -29,7 +30,7 @@ export async function collectAliyunRAMUsers(profileName: string, _accountId: str
   const users: AliyunRAMUserDetail[] = [];
   let marker: string | undefined;
   do {
-    const resp = await client.listUsers(new ramModule.ListUsersRequest({ marker, maxItems: 100 }));
+    const resp = await client.listUsers(new ramModule.ListUsersRequest({ marker, maxItems: PAGINATION.PAGE_SIZE }));
     for (const user of resp.body?.users?.user || []) {
       users.push(await collectUserDetail(client, user));
     }

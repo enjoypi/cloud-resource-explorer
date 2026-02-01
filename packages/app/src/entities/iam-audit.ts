@@ -153,6 +153,6 @@ export interface IAMAuditConfig {
 export const DEFAULT_AUDIT_CONFIG: IAMAuditConfig = {
   accessKeyMaxAgeDays: IAM_AUDIT.DEFAULT_KEY_MAX_AGE_DAYS,
   accessKeyUnusedDays: IAM_AUDIT.DEFAULT_KEY_UNUSED_DAYS,
-  maxDirectPolicies: 3,
+  maxDirectPolicies: IAM_AUDIT.DEFAULT_MAX_DIRECT_POLICIES,
   lastLoginMaxDays: IAM_AUDIT.DEFAULT_LAST_LOGIN_DAYS,
 };

@@ -10,6 +10,7 @@ import type { AWSIAMUserDetail, PolicyDetail, CredentialReportRow } from "../ent
 import { resolveAWSCredentials } from "./aws-client-factory.js";
 import { parsePolicyDocument } from "./iam-audit-utils.js";
 import { log } from "../utils/index.js";
+import { TIMEOUT, PAGINATION } from "../constants.js";
 
 export interface IAMUserFromExplorer { userName: string; userId: string; arn: string; accountId: string; }
 
@@ -22,11 +23,11 @@ export function extractIAMUsersFromExplorer(resources: any[]): IAMUserFromExplor
   return resources.filter(r => r.type === "iam" && r.arn?.includes(":user/")).map(r => ({ userName: r.name || r.id, userId: r.id, arn: r.arn, accountId: r.accountId }));
 }
 
-async function waitForCredentialReport(client: IAMClient, maxWaitMs = 30000): Promise<string> {
+async function waitForCredentialReport(client: IAMClient, maxWaitMs = TIMEOUT.CREDENTIAL_REPORT_MAX_WAIT): Promise<string> {
   const startTime = Date.now();
   while (Date.now() - startTime < maxWaitMs) {
     try { await client.send(new GenerateCredentialReportCommand({})); } catch (e: any) { if (e.name !== "LimitExceededException") throw e; }
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, TIMEOUT.CREDENTIAL_REPORT_RETRY_INTERVAL));
     try {
       const resp = await client.send(new GetCredentialReportCommand({}));
       if (resp.Content) return Buffer.from(resp.Content).toString("utf-8");
