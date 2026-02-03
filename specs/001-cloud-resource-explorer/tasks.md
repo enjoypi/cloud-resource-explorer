@@ -12,9 +12,9 @@
 
 **Purpose**: 项目初始化（已有项目结构，验证现有代码）
 
-- [x] T001 验证现有项目结构符合 Clean Architecture
-- [x] T002 [P] 验证 pnpm workspace 配置 in pnpm-workspace.yaml
-- [x] T003 [P] 验证 TypeScript 配置 in packages/app/tsconfig.json
+- [ ] T001 验证现有项目结构符合 Clean Architecture
+- [ ] T002 [P] 验证 pnpm workspace 配置 in pnpm-workspace.yaml
+- [ ] T003 [P] 验证 TypeScript 配置 in packages/app/tsconfig.json
 
 ---
 
@@ -22,12 +22,12 @@
 
 **Purpose**: 核心基础设施（阻塞所有用户故事）
 
-- [x] T004 验证 entities 定义 in packages/app/src/entities/
-- [x] T005 [P] 验证 Config 实体 in packages/app/src/entities/config.ts
-- [x] T006 [P] 验证 Profile 实体 in packages/app/src/entities/profile.ts
-- [x] T007 [P] 验证 Resource 实体 in packages/app/src/entities/resource.ts
-- [x] T008 验证日志适配器 in packages/app/src/adapters/log-adapter.ts
-- [x] T009 验证配置加载器 in packages/app/src/frameworks/config-loader.ts
+- [ ] T004 验证 entities 定义 in packages/app/src/entities/
+- [ ] T005 [P] 验证 Config 实体 in packages/app/src/entities/config.ts
+- [ ] T006 [P] 验证 Profile 实体 in packages/app/src/entities/profile.ts
+- [ ] T007 [P] 验证 Resource 实体 in packages/app/src/entities/resource.ts
+- [ ] T008 验证日志适配器 in packages/app/src/adapters/log-adapter.ts
+- [ ] T009 验证配置加载器 in packages/app/src/frameworks/config-loader.ts
 
 **Checkpoint**: 基础设施就绪 ✅
 
@@ -41,15 +41,15 @@
 
 ### Implementation
 
-- [x] T010 [US1] 验证 Profile 发现 in packages/app/src/adapters/profile-adapter.ts
-- [x] T011 [P] [US1] 验证 AWS 凭证工厂 in packages/app/src/adapters/aws-client-factory.ts
-- [x] T012 [P] [US1] 验证阿里云凭证 in packages/app/src/adapters/aliyun-credentials.ts
-- [x] T013 [US1] 验证 AWS 资源采集 in packages/app/src/adapters/aws-resource-explorer.ts
-- [x] T014 [US1] 验证阿里云资源采集 in packages/app/src/adapters/aliyun-resource-center.ts
-- [x] T015 [US1] 验证 CSV 导出 in packages/app/src/adapters/csv-adapter.ts
-- [x] T016 [US1] 验证采集用例（含并发控制和限流重试）in packages/app/src/use-cases/collect.ts
-- [x] T017 [US1] 验证导出用例 in packages/app/src/use-cases/export.ts
-- [x] T018 [US1] 验证 CLI 入口 in packages/app/src/frameworks/cli.ts
+- [ ] T010 [US1] 实现 Profile 发现 in packages/app/src/adapters/profile-adapter.ts
+- [ ] T011 [P] [US1] 实现 AWS 凭证工厂 in packages/app/src/adapters/aws-client-factory.ts
+- [ ] T012 [P] [US1] 实现阿里云凭证 in packages/app/src/adapters/aliyun-credentials.ts
+- [ ] T013 [US1] 实现 AWS 资源采集 in packages/app/src/adapters/aws-resource-explorer.ts
+- [ ] T014 [US1] 实现阿里云资源采集 in packages/app/src/adapters/aliyun-resource-center.ts
+- [ ] T015 [US1] 实现 CSV 导出 in packages/app/src/adapters/csv-adapter.ts
+- [ ] T016 [US1] 实现采集用例（含并发控制和限流重试）in packages/app/src/use-cases/collect.ts
+- [ ] T017 [US1] 实现导出用例 in packages/app/src/use-cases/export.ts
+- [ ] T018 [US1] 实现 CLI 入口 in packages/app/src/frameworks/cli.ts
 
 **Checkpoint**: US1 完成，可独立测试 ✅
 
@@ -63,9 +63,9 @@
 
 ### Implementation
 
-- [x] T019 [US2] 验证缓存适配器 in packages/app/src/adapters/cache-adapter.ts
-- [x] T020 [US2] 集成缓存到采集用例 in packages/app/src/use-cases/collect.ts
-- [x] T021 [US2] 验证 `--force-refresh` 参数 in packages/app/src/frameworks/cli-parser.ts
+- [ ] T019 [US2] 实现缓存适配器 in packages/app/src/adapters/cache-adapter.ts
+- [ ] T020 [US2] 集成缓存到采集用例 in packages/app/src/use-cases/collect.ts
+- [ ] T021 [US2] 实现 `--force-refresh` 参数 in packages/app/src/frameworks/cli-parser.ts
 
 **Checkpoint**: US2 完成，缓存功能可用 ✅
 
@@ -79,9 +79,9 @@
 
 ### Implementation
 
-- [x] T022 [US3] 验证 CLI 参数解析 in packages/app/src/frameworks/cli-parser.ts
-- [x] T023 [US3] 验证筛选逻辑 in packages/app/src/use-cases/collect.ts
-- [x] T024 [US3] 验证配置文件覆盖 in packages/app/src/frameworks/config-loader.ts
+- [ ] T022 [US3] 实现 CLI 参数解析 in packages/app/src/frameworks/cli-parser.ts
+- [ ] T023 [US3] 实现筛选逻辑 in packages/app/src/use-cases/collect.ts
+- [ ] T024 [US3] 实现配置文件覆盖 in packages/app/src/frameworks/config-loader.ts
 
 **Checkpoint**: US3 完成，筛选功能可用 ✅
 
@@ -95,10 +95,10 @@
 
 ### Implementation
 
-- [x] T025 [P] [US4] 验证 AWS SSO 适配器 in packages/app/src/adapters/aws-sso.ts
-- [x] T026 [P] [US4] 验证 AWS Organizations in packages/app/src/adapters/aws-organizations.ts
-- [x] T027 [P] [US4] 验证阿里云资源目录 in packages/app/src/adapters/aliyun-resource-directory.ts
-- [x] T028 [US4] 集成多账号到采集用例 in packages/app/src/use-cases/collect.ts
+- [ ] T025 [P] [US4] 实现 AWS SSO 适配器 in packages/app/src/adapters/aws-sso.ts
+- [ ] T026 [P] [US4] 实现 AWS Organizations in packages/app/src/adapters/aws-organizations.ts
+- [ ] T027 [P] [US4] 实现阿里云资源目录 in packages/app/src/adapters/aliyun-resource-directory.ts
+- [ ] T028 [US4] 集成多账号到采集用例 in packages/app/src/use-cases/collect.ts
 
 **Checkpoint**: US4 完成，多账号功能可用 ✅
 
@@ -112,8 +112,8 @@
 
 ### Implementation
 
-- [x] T029 [US5] 验证搜索参数 in packages/app/src/frameworks/cli-parser.ts
-- [x] T030 [US5] 实现搜索用例 in packages/app/src/use-cases/search.ts（如不存在则创建）
+- [ ] T029 [US5] 实现搜索参数 in packages/app/src/frameworks/cli-parser.ts
+- [ ] T030 [US5] 实现搜索用例 in packages/app/src/use-cases/search.ts
 
 **Checkpoint**: US5 完成，搜索功能可用 ✅
 
@@ -123,10 +123,11 @@
 
 **Purpose**: 跨故事优化
 
-- [x] T031 [P] 验证错误处理 in packages/app/src/utils/auth-error.ts
-- [x] T032 [P] 验证日志脱敏 in packages/app/src/adapters/log-adapter.ts
-- [x] T033 运行 `pnpm build` 确保编译通过
-- [x] T034 运行 `pnpm test` 确保测试通过
+- [ ] T031 [P] 实现错误处理 in packages/app/src/utils/auth-error.ts
+- [ ] T032 [P] 实现日志脱敏 in packages/app/src/utils/sanitizer.ts
+- [ ] T033 集成日志脱敏到日志适配器 in packages/app/src/adapters/log-adapter.ts
+- [ ] T034 运行 `pnpm build` 确保编译通过
+- [ ] T035 运行 `pnpm test` 确保测试通过
 
 ---
 
@@ -157,6 +158,9 @@ T011, T012        # 凭证适配器
 
 # US4 并行
 T025, T026, T027  # 多账号适配器
+
+# Polish 并行
+T031, T032        # 错误处理和日志脱敏
 ```
 
 ---
@@ -180,11 +184,12 @@ T025, T026, T027  # 多账号适配器
 
 | 指标 | 值 |
 |------|-----|
-| 总任务数 | 34 |
+| 总任务数 | 35 |
 | US1 任务 | 9 |
 | US2 任务 | 3 |
 | US3 任务 | 3 |
 | US4 任务 | 4 |
 | US5 任务 | 2 |
-| 可并行任务 | 13 |
+| Polish 任务 | 5 |
+| 可并行任务 | 14 |
 | MVP 范围 | US1 (Phase 1-3) |

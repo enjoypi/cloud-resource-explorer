@@ -1,6 +1,9 @@
 # Implementation Plan: Cloud Resource Explorer
 
-**Branch**: `001-cloud-resource-explorer` | **Date**: 2026-02-01 | **Spec**: [spec.md](./spec.md)
+**Branch**: `001-cloud-resource-explorer` | **Date**: 2026-02-02 | **Spec**: [spec.md](./spec.md)
+**Input**: Feature specification from `/specs/001-cloud-resource-explorer/spec.md`
+
+**Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
@@ -15,10 +18,12 @@
 **Target Platform**: Node.js 18+ / deno
 **Project Type**: Monorepo (pnpm workspace)
 **Performance Goals**: 单账号全类型采集 < 5 分钟
-**Constraints**: 并发数默认 3，缓存 TTL 默认 60 分钟
+**Constraints**: 并发数默认 3，缓存 TTL 默认 60 分钟，重试策略：初始延迟 1 秒，最大延迟 30 秒，总超时 120 秒
 **Scale/Scope**: 支持 15 种资源类型，多账号（Organizations/资源目录）
 
 ## Constitution Check
+
+*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
 | 原则 | 状态 | 说明 |
 |------|------|------|
@@ -28,18 +33,19 @@
 
 ## Project Structure
 
-### Documentation
+### Documentation (this feature)
 
 ```text
 specs/001-cloud-resource-explorer/
-├── plan.md              # 本文件
-├── spec.md              # 功能规格
-├── research.md          # 技术调研（已完成）
-├── data-model.md        # 数据模型
-└── tasks.md             # 任务分解
+├── plan.md              # This file (/speckit.plan command output)
+├── research.md          # Phase 0 output (/speckit.plan command)
+├── data-model.md        # Phase 1 output (/speckit.plan command)
+├── quickstart.md        # Phase 1 output (/speckit.plan command)
+├── contracts/           # Phase 1 output (/speckit.plan command)
+└── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
 ```
 
-### Source Code
+### Source Code (repository root)
 
 ```text
 packages/
@@ -55,62 +61,8 @@ packages/
 
 **Structure Decision**: 已有 Monorepo 结构，遵循 Clean Architecture 分层
 
-## Architecture
+## Complexity Tracking
 
-### 分层依赖
+> **Fill ONLY if Constitution Check has violations that must be justified**
 
-```
-frameworks (CLI) → use-cases → entities
-                      ↓
-                  adapters (SDK)
-```
-
-### 核心模块
-
-| 模块 | 职责 | 文件 |
-|------|------|------|
-| Profile 发现 | 读取本地配置文件 | `profile-adapter.ts` |
-| 资源采集 | 调用云 API 采集资源 | `aliyun-resource-center.ts`, `aws-resource-explorer.ts` |
-| 缓存管理 | 按 Profile/Type/Region 缓存 | `cache-adapter.ts` |
-| CSV 导出 | UTF-8 BOM 编码输出 | `csv-adapter.ts` |
-| 日志 | pino 结构化日志 | `log-adapter.ts` |
-| 多账号 | Organizations/资源目录 | `aws-organizations.ts`, `aliyun-resource-directory.ts` |
-
-### 配置结构 (YAML)
-
-```yaml
-cloud: all                    # aws | aliyun | all
-concurrency: 3                # 并发数
-cache:
-  ttl: 60                     # 分钟
-  dir: ./.cache
-retry:
-  maxAttempts: 3              # 最大重试次数
-  backoff: exponential        # 退避策略
-output:
-  dir: ./output
-  format: csv
-log:
-  level: info
-  dir: ./logs
-```
-
-## Phases
-
-### Phase 1: 核心采集 (P1)
-
-- Profile 发现与认证
-- 资源采集（15 种类型）
-- CSV 导出
-
-### Phase 2: 缓存与筛选 (P2)
-
-- 缓存机制
-- 命令行筛选参数
-- 配置文件支持
-
-### Phase 3: 多账号与搜索 (P3)
-
-- AWS Organizations 支持
-- 阿里云资源目录支持
-- 资源搜索功能
+No violations detected. All constitutional requirements are satisfied.

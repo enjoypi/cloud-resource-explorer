@@ -75,6 +75,9 @@ interface Config {
   retry: {
     maxAttempts: number
     backoff: 'exponential' | 'fixed'
+    baseDelay?: number      // 毫秒，指数退避初始延迟，默认 1000
+    maxDelay?: number       // 毫秒，最大延迟，默认 30000
+    maxWaitTime?: number    // 毫秒，总超时时间，默认 120000
   }
   output: {
     dir: string
