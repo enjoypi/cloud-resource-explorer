@@ -159,49 +159,57 @@ export async function collect(input: CollectInput): Promise<CollectOutput> {
   const rdInfoMap = new Map<string, { accounts: any[]; resourceDirectoryId: string }>();
 
   if (clouds.includes("aliyun")) {
-    const { collectAliyunRDAccounts, getResourceDirectoryId } = await import("../adapters/aliyun-resource-directory.js");
-    for (const profile of allProfiles.filter(p => p.cloud === "aliyun" && p.cloudSSOSession)) {
-      const accounts = await collectAliyunRDAccounts(profile.name);
-      if (accounts.length > 0) {
-        resources.push(...accounts);
-        const rdId = await getResourceDirectoryId(profile.name);
-        let rdAccounts = filterByProvider(accounts.map(a => ({ accountId: a.accountId || a.id, displayName: a.name, status: a.status || "Active" })), config.aliyun);
-        if (rdAccounts.length > 0 && rdId) rdInfoMap.set(profile.name, { accounts: rdAccounts, resourceDirectoryId: rdId });
+    try {
+      const { collectAliyunRDAccounts, getResourceDirectoryId } = await import("../adapters/aliyun-resource-directory.js");
+      for (const profile of allProfiles.filter(p => p.cloud === "aliyun" && p.cloudSSOSession)) {
+        const accounts = await collectAliyunRDAccounts(profile.name);
+        if (accounts.length > 0) {
+          resources.push(...accounts);
+          const rdId = await getResourceDirectoryId(profile.name);
+          let rdAccounts = filterByProvider(accounts.map(a => ({ accountId: a.accountId || a.id, displayName: a.name, status: a.status || "Active" })), config.aliyun);
+          if (rdAccounts.length > 0 && rdId) rdInfoMap.set(profile.name, { accounts: rdAccounts, resourceDirectoryId: rdId });
+        }
       }
+    } catch (e) {
+      log.debug("阿里云资源目录模块加载失败，跳过:", e);
     }
   }
 
   if (clouds.includes("aws")) {
-    const { listSSOAccounts } = await import("../adapters/aws-sso.js");
-    const { listAWSOrganizationAccounts, convertAWSAccountsToResources } = await import("../adapters/aws-organizations.js");
-    let awsProfiles = allProfiles.filter(p => p.cloud === "aws");
+    try {
+      const { listSSOAccounts } = await import("../adapters/aws-sso.js");
+      const { listAWSOrganizationAccounts, convertAWSAccountsToResources } = await import("../adapters/aws-organizations.js");
+      let awsProfiles = allProfiles.filter(p => p.cloud === "aws");
 
-    for (const profile of awsProfiles) {
-      if (profile.ssoSession) {
-        const ssoAccounts = await listSSOAccounts({ name: profile.ssoSession.name, startUrl: profile.ssoSession.startUrl, region: profile.ssoSession.region });
-        if (ssoAccounts.length > 0) {
-          resources.push(...ssoAccounts.map(a => ({ cloud: "aws" as const, profile: profile.name, accountId: a.accountId, type: "sso-account", id: a.accountId, name: a.accountName, region: "global", project: "", tags: { email: a.emailAddress }, status: "ACTIVE", collectedAt: new Date() })));
-          const viewArn = config.aws.resourceExplorerViewArn;
-          const aggregatorAccountId = viewArn ? viewArn.split(":")[4] : undefined;
-          const filteredAccounts = filterByProvider(ssoAccounts.map(a => ({ accountId: a.accountId, accountName: a.accountName })), config.aws);
-          const aggregatorAccount = aggregatorAccountId ? filteredAccounts.find(a => a.accountId === aggregatorAccountId) : filteredAccounts[0];
-          if (aggregatorAccount) profile.accountId = aggregatorAccount.accountId;
-          break;
+      for (const profile of awsProfiles) {
+        if (profile.ssoSession) {
+          const ssoAccounts = await listSSOAccounts({ name: profile.ssoSession.name, startUrl: profile.ssoSession.startUrl, region: profile.ssoSession.region });
+          if (ssoAccounts.length > 0) {
+            resources.push(...ssoAccounts.map(a => ({ cloud: "aws" as const, profile: profile.name, accountId: a.accountId, type: "sso-account", id: a.accountId, name: a.accountName, region: "global", project: "", tags: { email: a.emailAddress }, status: "ACTIVE", collectedAt: new Date() })));
+            const viewArn = config.aws.resourceExplorerViewArn;
+            const aggregatorAccountId = viewArn ? viewArn.split(":")[4] : undefined;
+            const filteredAccounts = filterByProvider(ssoAccounts.map(a => ({ accountId: a.accountId, accountName: a.accountName })), config.aws);
+            const aggregatorAccount = aggregatorAccountId ? filteredAccounts.find(a => a.accountId === aggregatorAccountId) : filteredAccounts[0];
+            if (aggregatorAccount) profile.accountId = aggregatorAccount.accountId;
+            break;
+          }
         }
       }
-    }
 
-    for (const profile of awsProfiles.filter(p => !p.ssoSession)) {
-      const orgAccounts = await listAWSOrganizationAccounts(profile.name);
-      if (orgAccounts.length > 0) { resources.push(...convertAWSAccountsToResources(orgAccounts, profile.name)); break; }
-    }
+      for (const profile of awsProfiles.filter(p => !p.ssoSession)) {
+        const orgAccounts = await listAWSOrganizationAccounts(profile.name);
+        if (orgAccounts.length > 0) { resources.push(...convertAWSAccountsToResources(orgAccounts, profile.name)); break; }
+      }
 
-    awsProfiles = awsProfiles.filter(p => {
-      if (!p.accountId) return true;
-      if (config.aws.accounts.length > 0 && !config.aws.accounts.includes(p.accountId)) return false;
-      return !config.aws.excludeAccounts.includes(p.accountId);
-    });
-    allProfiles = allProfiles.filter(p => p.cloud !== "aws" || awsProfiles.some(f => f.name === p.name));
+      awsProfiles = awsProfiles.filter(p => {
+        if (!p.accountId) return true;
+        if (config.aws.accounts.length > 0 && !config.aws.accounts.includes(p.accountId)) return false;
+        return !config.aws.excludeAccounts.includes(p.accountId);
+      });
+      allProfiles = allProfiles.filter(p => p.cloud !== "aws" || awsProfiles.some(f => f.name === p.name));
+    } catch (e) {
+      log.debug("AWS SSO/Organizations 模块加载失败，跳过:", e);
+    }
   }
 
   const expandedTypes = expandTypes(config.types);

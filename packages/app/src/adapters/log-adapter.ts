@@ -31,4 +31,17 @@ export class JsonLogAdapter implements LogAdapter {
     console.log(`[LOG] ${logLine}`);
     fs.appendFileSync(this.logFile, logLine + "\n", { mode: 0o600 });
   }
+
+  maskIp(ip: string): string {
+    if (ip.includes(":")) {
+      const segments = ip.split(":");
+      return segments.slice(0, 4).join(":") + ":" + segments.slice(4).map(() => "***").join(":");
+    }
+    const parts = ip.split(".");
+    return `${parts[0]}.${parts[1]}.***.***`;
+  }
+
+  truncateId(id: string): string {
+    return id.length > 8 ? id.substring(0, 8) : id;
+  }
 }
