@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 .claude/
 config.yaml
 output/
+# 个人本地备忘（不共享）
+.claude.local.md

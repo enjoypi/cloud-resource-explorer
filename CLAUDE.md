@@ -71,6 +71,9 @@ TypeScript 5.x + ESM: Follow standard conventions
 - 依赖找不到：执行 `pnpm install` 重新安装依赖
 - 构建失败：先构建 sso-validator 包（`cd packages/sso-validator && pnpm build`）
 - CLI 运行报错：使用 `pnpm start` 而非直接运行 dist/ 目录
+- 临时调试脚本须放 packages/app 目录下运行（相对 import dist/ 需正确路径，/tmp 下会 ERR_MODULE_NOT_FOUND）
+- CSV 数值列带前导单引号（防 Excel 公式注入），解析须先 lstrip("'")
+- aliyun resourcemanager 命令须加 `--region cn-hangzhou --endpoint resourcemanager.aliyuncs.com`，否则 endpoint 解析失败；ListAccounts 返回结构为 Accounts.Account[]
 
 ### 常用命令
 ```bash
@@ -98,6 +101,13 @@ cd packages/app && ./collect.sh  # 简化脚本（常用操作封装）
 - 多账号采集：自动支持 AWS Organizations 和阿里云资源目录
 - 资源搜索：按 IP、名称、ARN 搜索已采集资源
 - IAM 审计：安全审计和极速审计模式
-- CDN 用量费用：`--cdn-cost` 按月采集 CloudFront（CloudWatch 用量 + Cost Explorer 费用）与阿里云 CDN/DCDN（BssOpenApi 账单，域名级明细）
+- CDN 用量费用：`--cdn-cost` 按月采集 CloudFront（CloudWatch 用量 + Cost Explorer 费用）与阿里云 CDN/DCDN（BssOpenApi 账单）
+
+### 阿里云 CDN cost 采集要点（BssOpenApi 财务托管）
+- 财务托管下 `DescribeInstanceBill` 的 instanceID 形如 `成员账号ID;大区`（AP1/EU/NA），无域名粒度；故 CSV Domain 列填大区码或 ACCOUNT_TOTAL
+- accountId 取 ownerID（资源归属账号），billAccountID 是付款账号
+- 付款账号（非资源目录管理账号）用 billOwnerId 代查他账号返回空；自查（billOwnerId=undefined）即涵盖全部托管成员，无需逐个代查
+- DescribeInstanceBill 只返回有 CDN 消费的账号；用 QueryAccountBill（isGroupByProduct，覆盖全部托管账号）交叉验证可区分"未购 CDN"与"采集遗漏"
+- profile 须用财务托管的付款账号，用 invited 独立付费账号查不到任何托管账单
 
 <!-- MANUAL ADDITIONS END -->
