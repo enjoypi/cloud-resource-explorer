@@ -18,8 +18,8 @@
     "yaml": "^2.8.2"
   },
   "dependencies": {
-    "@cloud-explorer/sso-validator": "workspace:*",
     "@alicloud/alidns20150109": "^4.3.0",
+    "@alicloud/bssopenapi20171214": "^4.1.1",
     "@alicloud/cdn20180510": "^8.0.0",
     "@alicloud/credentials": "^2.4.4",
     "@alicloud/cs20151215": "^6.4.0",
@@ -39,6 +39,8 @@
     "@alicloud/tea-util": "^1.4.11",
     "@alicloud/vpc20160428": "^6.11.1",
     "@aws-sdk/client-cloudfront": "^3.975.0",
+    "@aws-sdk/client-cloudwatch": "^3.1066.0",
+    "@aws-sdk/client-cost-explorer": "^3.1066.0",
     "@aws-sdk/client-ec2": "^3.975.0",
     "@aws-sdk/client-eks": "^3.975.0",
     "@aws-sdk/client-elastic-load-balancing-v2": "^3.975.0",
@@ -59,6 +61,7 @@
     "@aws-sdk/client-sso-oidc": "^3.975.0",
     "@aws-sdk/client-sts": "^3.975.0",
     "@aws-sdk/credential-providers": "^3.975.0",
+    "@cloud-explorer/sso-validator": "workspace:*",
     "pino": "^10.3.0"
   }
 }

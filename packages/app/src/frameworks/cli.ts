@@ -8,6 +8,10 @@ import { collect } from "../use-cases/collect.js";
 import { exportResources } from "../use-cases/export.js";
 import { countResources, printCountSummary } from "../use-cases/count.js";
 import { runIAMAudit } from "../use-cases/iam-audit.js";
+import { collectCdnCost } from "../use-cases/cdn-cost.js";
+import { awsCdnCostPort } from "../adapters/aws-cdn-cost.js";
+import { aliyunCdnCostPort } from "../adapters/aliyun-cdn-cost.js";
+import { writeCdnCostCSV, printCdnCostSummary } from "../adapters/cdn-cost-export.js";
 import { searchAWSResourcesByIP } from "../adapters/aws-resource-explorer.js";
 import { writeIAMAuditReport, printAuditSummary } from "../adapters/iam-audit-export.js";
 import { log, setLogLevel } from "../utils/index.js";
@@ -85,8 +89,22 @@ async function runSearch(config: Config, searchQuery: string): Promise<void> {
   }
 }
 
+async function runCdnCostMode(config: Config, profileAdapter: SDKProfileAdapter): Promise<void> {
+  log.info(`开始 CDN 用量费用采集（最近 ${config.cdnCost.months} 个完整月 + 本月至今）...`);
+  const startTime = Date.now();
+  const cacheAdapter = new FileCacheAdapter(config.cacheDir);
+  const { records, errors } = await collectCdnCost({ config, profileAdapter, cacheAdapter, aws: awsCdnCostPort, aliyun: aliyunCdnCostPort });
+  if (errors.length > 0) {
+    log.warn(`${errors.length} 个采集范围失败`);
+    for (const e of errors) log.error(`[${e.cloud}] ${e.profile}/${e.scope}: ${e.message}`);
+  }
+  if (records.length > 0) writeCdnCostCSV(records, config.outputDir);
+  printCdnCostSummary(records);
+  log.info(`CDN 用量费用采集完成，耗时 ${((Date.now() - startTime) / TIME.MS_PER_SECOND).toFixed(2)}s，共 ${records.length} 条记录`);
+}
+
 async function main(): Promise<void> {
-  const { config: cliConfig, configPath, help, version, iamAudit, iamFast, countOnly, searchQuery, auditConfig } = parseCliArgs();
+  const { config: cliConfig, configPath, help, version, iamAudit, iamFast, cdnCost, countOnly, searchQuery, auditConfig } = parseCliArgs();
   if (help) { printHelp(); process.exit(0); }
   if (version) { console.log(VERSION); process.exit(0); }
 
@@ -98,6 +116,7 @@ async function main(): Promise<void> {
   if (iamAudit || iamFast) { await runIAMAuditMode(config, profileAdapter, auditConfig, iamFast); return; }
   if (searchQuery) { await runSearch(config, searchQuery); return; }
   if (!await validateCredentials(config)) process.exit(1);
+  if (cdnCost) { await runCdnCostMode(config, profileAdapter); return; }
   if (countOnly) { log.info("统计资源数量..."); printCountSummary(await countResources({ config, profileAdapter })); return; }
 
   const cacheAdapter = new FileCacheAdapter(config.cacheDir);

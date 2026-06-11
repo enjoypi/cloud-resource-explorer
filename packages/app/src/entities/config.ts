@@ -8,11 +8,14 @@ export interface ProviderConfig {
   resourceExplorerViewArn?: string;
 }
 
+import type { CdnCostConfig } from "./cdn-cost.js";
+
 export interface Config {
   cloud: "aws" | "aliyun" | "all";
   types: string[];
   aliyun: ProviderConfig;
   aws: ProviderConfig;
+  cdnCost: CdnCostConfig;
   outputDir: string;
   logDir: string;
   cacheDir: string;

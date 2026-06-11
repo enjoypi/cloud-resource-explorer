@@ -4,7 +4,7 @@ import type { IAMAuditConfig } from "../entities/iam-audit.js";
 
 export const VERSION = "1.0.0";
 
-import { CLI, IAM_AUDIT, CACHE } from "../constants.js";
+import { CLI, IAM_AUDIT, CACHE, CDN_COST } from "../constants.js";
 
 const MAX_LIST_SIZE = CLI.MAX_LIST_SIZE;
 function parseList(value: string | undefined, maxSize: number = MAX_LIST_SIZE): string[] {
@@ -21,6 +21,7 @@ export interface CliParseResult {
   version: boolean;
   iamAudit: boolean;
   iamFast: boolean;
+  cdnCost: boolean;
   countOnly: boolean;
   searchQuery: string | undefined;
   auditConfig: Partial<IAMAuditConfig>;
@@ -53,6 +54,10 @@ Options:
   --audit-unused <days>   AccessKey 未使用天数阈值 (default: ${IAM_AUDIT.DEFAULT_KEY_UNUSED_DAYS})
   --audit-login <days>    最后登录时间阈值 (default: ${IAM_AUDIT.DEFAULT_LAST_LOGIN_DAYS})
 
+  CDN 用量费用选项:
+  --cdn-cost              采集 CDN 用量与费用（CloudFront + 阿里云 CDN/DCDN）
+  --cost-months <n>       采集最近 N 个完整月（外加本月至今）(default: ${CDN_COST.DEFAULT_MONTHS})
+
   通用选项:
   --search <query>        搜索资源 (IP、名称、ARN 等)
   --count-only            仅统计资源数量，不采集详细列表
@@ -76,6 +81,7 @@ export function parseCliArgs(): CliParseResult {
       "aliyun-profile": { type: "string" }, "aliyun-region": { type: "string" }, "aliyun-account": { type: "string" },
       "aws-profile": { type: "string" }, "aws-region": { type: "string" }, "aws-account": { type: "string" },
       "iam-audit": { type: "boolean" }, "iam-fast": { type: "boolean" }, "count-only": { type: "boolean" }, "search": { type: "string" },
+      "cdn-cost": { type: "boolean" }, "cost-months": { type: "string" },
       "audit-key-age": { type: "string" }, "audit-unused": { type: "string" }, "audit-login": { type: "string" },
       output: { type: "string" }, "log-dir": { type: "string" }, "cache-dir": { type: "string" }, "cache-ttl": { type: "string" },
       "force-refresh": { type: "boolean", short: "f" }, concurrency: { type: "string" }, "log-level": { type: "string" },
@@ -112,6 +118,11 @@ export function parseCliArgs(): CliParseResult {
     config.logLevel = values["log-level"] as Config["logLevel"];
   }
 
+  if (typeof values["cost-months"] === "string") {
+    const months = parseInt(values["cost-months"], 10);
+    if (!Number.isNaN(months) && months >= 0) config.cdnCost = { months } as Config["cdnCost"];
+  }
+
   const auditConfig: Partial<IAMAuditConfig> = {};
   if (typeof values["audit-key-age"] === "string") auditConfig.accessKeyMaxAgeDays = parseInt(values["audit-key-age"], 10);
   if (typeof values["audit-unused"] === "string") auditConfig.accessKeyUnusedDays = parseInt(values["audit-unused"], 10);
@@ -120,7 +131,8 @@ export function parseCliArgs(): CliParseResult {
   return {
     config, configPath: typeof values.config === "string" ? values.config : "./config.yaml",
     help: values.help === true, version: values.version === true,
-    iamAudit: values["iam-audit"] === true, iamFast: values["iam-fast"] === true, countOnly: values["count-only"] === true,
+    iamAudit: values["iam-audit"] === true, iamFast: values["iam-fast"] === true,
+    cdnCost: values["cdn-cost"] === true, countOnly: values["count-only"] === true,
     searchQuery: typeof values["search"] === "string" ? values["search"] : undefined, auditConfig,
   };
 }

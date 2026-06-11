@@ -16,3 +16,6 @@ export * from "./aws-iam-collector.js";
 export * from "./aliyun-ram-audit.js";
 export * from "./iam-audit-export.js";
 export * from "./iam-audit-utils.js";
+export * from "./aws-cdn-cost.js";
+export * from "./aliyun-cdn-cost.js";
+export * from "./cdn-cost-export.js";

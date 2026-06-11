@@ -59,13 +59,56 @@ function getAccessToken(startUrl: string): string | null {
   return null;
 }
 
+export interface ProfileSSORef {
+  sessionName?: string;
+  startUrl?: string;
+  region?: string;
+  roleName?: string;
+}
+
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/** 解析 [profile X] 段的 SSO 引用（sso_session 或旧式内联 sso_start_url） */
+export function parseAWSProfileSSORef(profileName: string): ProfileSSORef | null {
+  const configPath = path.join(os.homedir(), ".aws", "config");
+  if (!fs.existsSync(configPath)) return null;
+  const content = fs.readFileSync(configPath, "utf-8");
+  const match = content.match(new RegExp(`\\[profile\\s+${escapeRegExp(profileName)}\\]`));
+  if (!match || match.index === undefined) return null;
+  const start = match.index + match[0].length;
+  const next = content.indexOf("[", start);
+  const section = next > 0 ? content.slice(start, next) : content.slice(start);
+  return {
+    sessionName: section.match(/sso_session\s*=\s*(.+)/)?.[1]?.trim(),
+    startUrl: section.match(/sso_start_url\s*=\s*(.+)/)?.[1]?.trim(),
+    region: section.match(/sso_region\s*=\s*(.+)/)?.[1]?.trim(),
+    roleName: section.match(/sso_role_name\s*=\s*(.+)/)?.[1]?.trim(),
+  };
+}
+
 export async function validateAWSSSOSession(sessionName: string): Promise<ValidationResult> {
   const sessions = parseAWSSSOSessions();
-  const session = sessions.find(s => s.name === sessionName);
+  let session = sessions.find(s => s.name === sessionName);
+  let refreshCommand = `aws sso login --sso-session ${sessionName}`;
+  if (!session) {
+    // 传入的可能是引用 sso_session 的 profile 名，需解析出实际 session 再校验，
+    // 否则刷新提示会错误地把 profile 名当 session 名
+    const ref = parseAWSProfileSSORef(sessionName);
+    if (ref?.sessionName) {
+      session = sessions.find(s => s.name === ref.sessionName);
+      refreshCommand = `aws sso login --sso-session ${ref.sessionName}`;
+    } else if (ref?.startUrl) {
+      // 旧式 profile 内联 SSO 配置（无 sso-session 段）
+      session = { name: sessionName, startUrl: ref.startUrl, region: ref.region || "us-east-1" };
+      refreshCommand = `aws sso login --profile ${sessionName}`;
+    }
+  }
   const result: ValidationResult = {
     session: sessionName,
     valid: false,
-    refreshCommand: `aws sso login --sso-session ${sessionName}`,
+    refreshCommand,
   };
   if (!session) return result;
 

@@ -65,6 +65,10 @@ pnpm start --iam-audit
 
 # 按 IP 搜索
 pnpm start --search 10.0.1.100
+
+# CDN 用量与费用（CloudFront + 阿里云 CDN/DCDN，输出 output/cdn-cost.csv）
+pnpm start --cdn-cost
+pnpm start --cdn-cost --cost-months 6   # 最近 6 个完整月 + 本月至今
 ```
 
 ---

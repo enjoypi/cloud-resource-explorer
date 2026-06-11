@@ -79,6 +79,7 @@ pnpm start --help       # 显示帮助
 pnpm start -f           # 强制刷新，忽略缓存
 pnpm start --count-only # 仅统计资源数量
 pnpm start --search <q> # 按 IP/名称/ARN 搜索
+pnpm start --cdn-cost   # CDN 用量与费用（输出 output/cdn-cost.csv）
 pnpm build             # 编译 TypeScript
 pnpm test              # 运行测试
 cd packages/app && ./collect.sh  # 简化脚本（常用操作封装）
@@ -97,5 +98,6 @@ cd packages/app && ./collect.sh  # 简化脚本（常用操作封装）
 - 多账号采集：自动支持 AWS Organizations 和阿里云资源目录
 - 资源搜索：按 IP、名称、ARN 搜索已采集资源
 - IAM 审计：安全审计和极速审计模式
+- CDN 用量费用：`--cdn-cost` 按月采集 CloudFront（CloudWatch 用量 + Cost Explorer 费用）与阿里云 CDN/DCDN（BssOpenApi 账单，域名级明细）
 
 <!-- MANUAL ADDITIONS END -->

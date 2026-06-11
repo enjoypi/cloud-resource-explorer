@@ -28,6 +28,16 @@ export const IAM_AUDIT = {
   DEFAULT_MAX_DIRECT_POLICIES: 3,
 } as const;
 
+export const CDN_COST = {
+  DEFAULT_MONTHS: 3,
+  /** AWS 计费口径 1 GB = 2^30 bytes */
+  BYTES_PER_GB: 1024 ** 3,
+  /** CloudWatch 按天聚合再归并到月 */
+  CW_PERIOD_SECONDS: 86400,
+  BSS_PAGE_SIZE: 300,
+  DEFAULT_ALIYUN_BSS_ENDPOINT: "business.aliyuncs.com",
+} as const;
+
 export const CLI = {
   MAX_LIST_SIZE: 100,
   MAX_CONCURRENCY: 20,

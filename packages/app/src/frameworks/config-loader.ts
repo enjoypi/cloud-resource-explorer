@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import { parse as parseYaml } from "yaml";
 import type { Config, ProviderConfig } from "../entities/index.js";
 import { log } from "../utils/index.js";
-import { CACHE } from "../constants.js";
+import { CACHE, CDN_COST } from "../constants.js";
 
 export interface ConfigLoader {
   load(yamlPath: string, cliArgs: Partial<Config>): Config;
@@ -22,6 +22,7 @@ const DEFAULT_CONFIG: Config = {
   types: ["compute", "storage", "network", "slb", "database", "cache", "cdn", "dns", "container", "iam"],
   aliyun: { ...DEFAULT_PROVIDER },
   aws: { ...DEFAULT_PROVIDER },
+  cdnCost: { months: CDN_COST.DEFAULT_MONTHS, aliyunBssEndpoint: CDN_COST.DEFAULT_ALIYUN_BSS_ENDPOINT },
   outputDir: "./output",
   logDir: "./logs",
   cacheDir: "./.cache",
@@ -63,6 +64,10 @@ export class YamlConfigLoader implements ConfigLoader {
       types: cliArgs.types ?? yamlConfig.types ?? DEFAULT_CONFIG.types,
       aliyun: mergeProvider(cliArgs.aliyun, yamlConfig.aliyun),
       aws: mergeProvider(cliArgs.aws, yamlConfig.aws),
+      cdnCost: {
+        months: cliArgs.cdnCost?.months ?? yamlConfig.cdnCost?.months ?? DEFAULT_CONFIG.cdnCost.months,
+        aliyunBssEndpoint: cliArgs.cdnCost?.aliyunBssEndpoint ?? yamlConfig.cdnCost?.aliyunBssEndpoint ?? DEFAULT_CONFIG.cdnCost.aliyunBssEndpoint,
+      },
       outputDir: cliArgs.outputDir ?? yamlConfig.outputDir ?? DEFAULT_CONFIG.outputDir,
       logDir: cliArgs.logDir ?? yamlConfig.logDir ?? DEFAULT_CONFIG.logDir,
       cacheDir: cliArgs.cacheDir ?? yamlConfig.cacheDir ?? DEFAULT_CONFIG.cacheDir,

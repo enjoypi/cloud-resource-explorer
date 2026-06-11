@@ -5,9 +5,10 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as os from "node:os";
 import { log } from "../utils/index.js";
-import { 
-  parseAWSSSOSessions as parseSessions, 
+import {
+  parseAWSSSOSessions as parseSessions,
   validateAWSSSOSession as validateSession,
+  parseAWSProfileSSORef as parseProfileSSORef,
   type AWSSSOSession as SSOSession,
   type ValidationResult
 } from "@cloud-explorer/sso-validator/aws";
@@ -16,6 +17,7 @@ export type AWSSSOSession = SSOSession;
 export type AWSCredentialValidation = ValidationResult;
 export const parseAWSSSOSessions = parseSessions;
 export const validateAWSSSOSession = validateSession;
+export const parseAWSProfileSSORef = parseProfileSSORef;
 
 export interface AWSSSOAccount {
   accountId: string;

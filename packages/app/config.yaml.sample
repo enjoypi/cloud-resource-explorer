@@ -38,6 +38,13 @@ aws:
   # Resource Explorer 组织视图
   resourceExplorerViewArn: ""
 
+# CDN 用量费用采集（--cdn-cost 模式）
+cdnCost:
+  # 最近 N 个完整月（外加本月至今）
+  months: 3
+  # 国际站账号改为 business.ap-southeast-1.aliyuncs.com
+  aliyunBssEndpoint: business.aliyuncs.com
+
 outputDir: ./output
 logDir: ./logs
 cacheDir: ./.cache

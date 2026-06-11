@@ -1,0 +1,863 @@
+{
+  "version": 1,
+  "skills": {
+    "alibabacloud-ack-cli": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/container/csk/alibabacloud-ack-cli/SKILL.md",
+      "computedHash": "03220360e9ea32f5eac092a5df2435da2ec8412981680508769739705a12fe90"
+    },
+    "alibabacloud-aes-ack-pod-performance-profiling": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/playbooks/trouboper/alibabacloud-aes-ack-pod-performance-profiling/SKILL.md",
+      "computedHash": "1c8b7748e49411e285991c386958025dcb3c26b2db0cd9bca09a02b07135f22a"
+    },
+    "alibabacloud-aes-sysom-os-diagnosis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/others/devopsimpl/alibabacloud-aes-sysom-os-diagnosis/SKILL.md",
+      "computedHash": "45b2b78d5be6efd3ef8d5dab8eaf69ece302f60c85710d76e55539f77283e05b"
+    },
+    "alibabacloud-aes-sysom-pai-diagnosis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/playbooks/trouboper/alibabacloud-aes-sysom-pai-diagnosis/SKILL.md",
+      "computedHash": "3fa9427aeae6588bc88760c7bfd0fdd46184db308a22b9c682c93a1b709c3f3f"
+    },
+    "alibabacloud-agentbay-aio-skills": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/agentbay/alibabacloud-agentbay-aio-skills/SKILL.md",
+      "computedHash": "dd62ffc081bd8fbba9a06e92383b0509212f52c708862f52b4f8d407e086516c"
+    },
+    "alibabacloud-agentloop-contextstore": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/middleware/cms/alibabacloud-agentloop-contextstore/SKILL.md",
+      "computedHash": "653948a0932c699f10cb085a431f585473bf35cabf537b37a1d57a07dc251100"
+    },
+    "alibabacloud-alinux-sysom-inspection": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/computing/alinux/alibabacloud-alinux-sysom-inspection/SKILL.md",
+      "computedHash": "46f362a6ccbe84991f738a1a8b710cafc657334a78c28bb6230d95ef0415805a"
+    },
+    "alibabacloud-analyticdb-mysql-copilot": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/adb/alibabacloud-analyticdb-mysql-copilot/SKILL.md",
+      "computedHash": "5024d57c9410cc77d3a9238dad69ee1c3c2f700809c6a000268ebcc7903ae94b"
+    },
+    "alibabacloud-analyticdb-postgresql-ai-coaching-best-practice": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/solutions/alibabacloud-analyticdb-postgresql-ai-coaching-best-practice/SKILL.md",
+      "computedHash": "148b6114acec49644745699a44af89d099eecdcce91c8da548d24ea0c0877804"
+    },
+    "alibabacloud-analyticdb-postgresql-knowledgebase-ops": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/adb/alibabacloud-analyticdb-postgresql-knowledgebase-ops/SKILL.md",
+      "computedHash": "14236a0cdd720bf5260fcd0113782f4364ebe21629151367cfc46fa6355197e3"
+    },
+    "alibabacloud-analyticdb-postgresql-supabase-ops": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/gpdb/alibabacloud-analyticdb-postgresql-supabase-ops/SKILL.md",
+      "computedHash": "5694796d75f424b3262fd75a2699a1c06f6b99f75d3309f629ba620f4983b888"
+    },
+    "alibabacloud-analyticdb-spark-application-analysis-helper": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/ads/alibabacloud-analyticdb-spark-application-analysis-helper/SKILL.md",
+      "computedHash": "60995959bd9777803f5ec6624bc39bc4d8069fb9857dea2d76a742f9f5d2dcea"
+    },
+    "alibabacloud-avatar-video": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/avatar/alibabacloud-avatar-video/SKILL.md",
+      "computedHash": "9a10a372e9313450bc3223c34c0e803c33e486619220ad4a9f51b8d5dbfabfbf"
+    },
+    "alibabacloud-bailian-rag-knowledgebase": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/sfm/alibabacloud-bailian-rag-knowledgebase/SKILL.md",
+      "computedHash": "1168084213d941e404239a39d67c18736cdbff26e3e157fd84de5358aa722e9f"
+    },
+    "alibabacloud-bailian-videoanalysis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/sfm/alibabacloud-bailian-videoanalysis/SKILL.md",
+      "computedHash": "cd7ea1e3fdc4491628917d477c5b5ce19e47c8b3e4f0c1f15e8e7fd2eae0569b"
+    },
+    "alibabacloud-cfw-exposure-detection": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/cloudfw/alibabacloud-cfw-exposure-detection/SKILL.md",
+      "computedHash": "9f101606ae1cea26ef4e7d03fc1dcaad260e0e4f944bc8bf67f1dee0654f7799"
+    },
+    "alibabacloud-cfw-internet-firewall-protect": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/cfw/alibabacloud-cfw-internet-firewall-protect/SKILL.md",
+      "computedHash": "93a746a4e07b34b6931f098d328774c0de92a6ac36b444dc85a061171f541b7e"
+    },
+    "alibabacloud-cfw-ips-event": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/cloudfw/alibabacloud-cfw-ips-event/SKILL.md",
+      "computedHash": "51dda7362c97ca807bf42eecddb9b59d71f7b69f837e9848462bc9fde2928a24"
+    },
+    "alibabacloud-cfw-status-overview": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/cloudfw/alibabacloud-cfw-status-overview/SKILL.md",
+      "computedHash": "82c2a637bb6e6903358ba3216a518a2f3d527066a497ecbbec70d13807d9a0bb"
+    },
+    "alibabacloud-chatapp-message-send": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/entcmc/cams/alibabacloud-chatapp-message-send/SKILL.md",
+      "computedHash": "7ce3f1f0af7815e17b21649e664bf2c2705d259ff2f46a923906b65ef2739098"
+    },
+    "alibabacloud-cksync-plan": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/clickhouse/alibabacloud-cksync-plan/SKILL.md",
+      "computedHash": "83e1a0bd9bed87a5a786c6c665b1a38f60e4d3508c596edbb7a2762c07d9eeea"
+    },
+    "alibabacloud-cli-guidance": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/developertools/solutions/alibabacloud-cli-guidance/SKILL.md",
+      "computedHash": "d161c22f620515fa7dd7c4b758bdd2cdc3370deb9b00e2257979a0e813993b10"
+    },
+    "alibabacloud-cloudbackup-ecs-file-backup-essential-edition": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/hbr/alibabacloud-cloudbackup-ecs-file-backup-essential-edition/SKILL.md",
+      "computedHash": "592faae1ddc54f2b4e7478c5d1b2a66c0bca363e3fc06051f48f845c15f6839f"
+    },
+    "alibabacloud-cms-alert-rule-create": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/middleware/cms/alibabacloud-cms-alert-rule-create/SKILL.md",
+      "computedHash": "70ac93198cbbfc46901a63cf2aa0f8108cba35c22a22e2654df40911f73324f7"
+    },
+    "alibabacloud-cms-dataset": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/middleware/cms/alibabacloud-cms-dataset/SKILL.md",
+      "computedHash": "227b14ac8586595864b77c3ed7c0ea91f8ad3f4df9613316362df12798393184"
+    },
+    "alibabacloud-cms-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/middleware/cms/alibabacloud-cms-manage/SKILL.md",
+      "computedHash": "e3164272944d5c610604c83e10081f6f4c669cc416f8aa929df6bad361c33ff4"
+    },
+    "alibabacloud-csas-user-device-ops": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/csas/alibabacloud-csas-user-device-ops/SKILL.md",
+      "computedHash": "564809084832a1356f2b4f97b553bb5a7cb33fac99666a44ccd00fdce3b4208c"
+    },
+    "alibabacloud-das-agent": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/hdm/alibabacloud-das-agent/SKILL.md",
+      "computedHash": "eedaf0313f012a7b51f02bbdbaf8130082c19fa7dfdad0efd73c2c04c8ad3174"
+    },
+    "alibabacloud-data-agent-skill": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/dms/alibabacloud-data-agent-skill/SKILL.md",
+      "computedHash": "a99bf1efb5a515bcc2f94e12b6d7bc4e86ea55a821ff7afcc27e47d66e528f25"
+    },
+    "alibabacloud-dataworks-data-ops": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/dide/alibabacloud-dataworks-data-ops/SKILL.md",
+      "computedHash": "560b8da9bfe99ea51fa31b3d5e880962d78a0c8d22c4290bf8576d75a1f31be8"
+    },
+    "alibabacloud-dataworks-datastudio-develop": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/dide/alibabacloud-dataworks-datastudio-develop/SKILL.md",
+      "computedHash": "9c41f73b894262006bfa2fa749bf5df34e2b48f5b4088f32b3e084daefea39db"
+    },
+    "alibabacloud-dataworks-infra-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/dide/alibabacloud-dataworks-infra-manage/SKILL.md",
+      "computedHash": "42eaf667ed1b984c1c8664ac6b5199462e9424550a1ee3b5dc313a71dda5f224"
+    },
+    "alibabacloud-dataworks-metadata": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/dide/alibabacloud-dataworks-metadata/SKILL.md",
+      "computedHash": "0a038162777d6063065a83ecb995b11d893c5d6c440ee1f2a13284c9244fca36"
+    },
+    "alibabacloud-dataworks-workspace-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/dide/alibabacloud-dataworks-workspace-manage/SKILL.md",
+      "computedHash": "8499051dc0f52b861684b99ef403f3caed1cd313bea1d8517d66a35fec3f7a16"
+    },
+    "alibabacloud-ddos-native-intercept-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/ddos/alibabacloud-ddos-native-intercept-query/SKILL.md",
+      "computedHash": "4b2cfd19f9bf785a05ea2287d9c64e454a09ba3be36fa4b31543474dd75356da"
+    },
+    "alibabacloud-ddos-security-monitor": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/ddos/alibabacloud-ddos-security-monitor/SKILL.md",
+      "computedHash": "541033201fe8e9318d3124b74cc4a2ee1b56de8ca4722b8926a9a338e106802f"
+    },
+    "alibabacloud-ddoscoo-intercept-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/ddos/alibabacloud-ddoscoo-intercept-query/SKILL.md",
+      "computedHash": "1de15d88c952a5bce3db74ca66f06e5ccca0458d1da77f5c7f47ee897239044e"
+    },
+    "alibabacloud-dlf-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/dlf/alibabacloud-dlf-manage/SKILL.md",
+      "computedHash": "374a6823c01f8edcd3c9d08c995cd4e2b66911b46b9fe27e1326e58e7614c6d6"
+    },
+    "alibabacloud-dms-data-agent-platform-setup": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/dms/alibabacloud-dms-data-agent-platform-setup/SKILL.md",
+      "computedHash": "baf42e96e26d6762f033f36a27c4792c444587cedfb0983b2ebd3420a9b2a75f"
+    },
+    "alibabacloud-dms-skill": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/dms/alibabacloud-dms-skill/SKILL.md",
+      "computedHash": "8dbd06070c3821cf86fde82069556bfe080af5f10aea795045f4838ee5ef0eaa"
+    },
+    "alibabacloud-domain-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/doweb/domain/alibabacloud-domain-manage/SKILL.md",
+      "computedHash": "799cb05b0dd8264d4841d836a610946c8ffe463f96211c15736a1bbf1a307a3b"
+    },
+    "alibabacloud-dsc-audit": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/sddp/alibabacloud-dsc-audit/SKILL.md",
+      "computedHash": "a23fb63358944d4d6c8582459d04b3737b65d7231da6a1b6867e9b10af1eb49e"
+    },
+    "alibabacloud-dts-task-manager": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/dts/alibabacloud-dts-task-manager/SKILL.md",
+      "computedHash": "8f8b907007fc4bbd65c7e8a2d40c1b650770719a5259ecac2ede9d580e463a86"
+    },
+    "alibabacloud-dts-task-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/others/devopsimpl/alibabacloud-dts-task-query/SKILL.md",
+      "computedHash": "597673dd0b1eb2d6bdd128e3746ab7ca4863f92edfdeaf20845826d0f09532fd"
+    },
+    "alibabacloud-ebs-disk-metric-analyzer": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/disk/alibabacloud-ebs-disk-metric-analyzer/SKILL.md",
+      "computedHash": "ed9470039b3246d2fa7918b0c9b7456f95f4030fecf1042bfff800e87e52d76e"
+    },
+    "alibabacloud-ecs-code-deploy": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/computing/computenest/alibabacloud-ecs-code-deploy/SKILL.md",
+      "computedHash": "d7878d70a41738b7bf2f962419c9eb6f967765eeafd8fb065c571330db1a4522"
+    },
+    "alibabacloud-ecs-diagnose": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/computing/ecs/alibabacloud-ecs-diagnose/SKILL.md",
+      "computedHash": "3b6eeb5c2e98b7799f77ff9f65963f2d3e08a196d3380c35a5fc268dfa115311"
+    },
+    "alibabacloud-ecs-health-inspection": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/playbooks/trouboper/alibabacloud-ecs-health-inspection/SKILL.md",
+      "computedHash": "aa16911b194128c88e177af64c3a8d343e20f12ae8ced8027f1dbc71fc5b3060"
+    },
+    "alibabacloud-ecs-install-extension": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrationom/oos/alibabacloud-ecs-install-extension/SKILL.md",
+      "computedHash": "0559131d75ad64c1c5561dd1117d4c6678a7a71896fb25108e3d93f571017df1"
+    },
+    "alibabacloud-ecs-patch-management": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrationom/oos/alibabacloud-ecs-patch-management/SKILL.md",
+      "computedHash": "cc6d83ed76e9d4fa2549d3b9e9380fc000c01d383943dbc354fbaa85073aa897"
+    },
+    "alibabacloud-ecs-reboot-or-crash-diagnosis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/others/devopsimpl/alibabacloud-ecs-reboot-or-crash-diagnosis/SKILL.md",
+      "computedHash": "9f882156a1a75295a6e6ac601d225ffe134cd45bd5d2c590d56c71eee9c17086"
+    },
+    "alibabacloud-ehpc-instant-job-skill": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/computing/ehpc/alibabacloud-ehpc-instant-job-skill/SKILL.md",
+      "computedHash": "7ce11be7833345dd90ce1e0364cf9d76fdd4bd6e3c1f4b3bbe9512ea390d3e41"
+    },
+    "alibabacloud-elasticsearch-instance-diagnose": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/elasticsearch/alibabacloud-elasticsearch-instance-diagnose/SKILL.md",
+      "computedHash": "a40de21f7d239ebba14d320f0eaf25f98898bd5d8b8b39094ac8e32f93b99578"
+    },
+    "alibabacloud-elasticsearch-instance-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/elasticsearch/alibabacloud-elasticsearch-instance-manage/SKILL.md",
+      "computedHash": "fc8d570235fcc8a97567e5791ca458d74bdeb86ba3aaf6ad1fe610149284fff9"
+    },
+    "alibabacloud-elasticsearch-network-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/elasticsearch/alibabacloud-elasticsearch-network-manage/SKILL.md",
+      "computedHash": "05f921d76989ae4bd80d550b662649979748bd16099f6c5710f8cf6f5e49bb77"
+    },
+    "alibabacloud-emas-apm-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/entcmc/emas/alibabacloud-emas-apm-query/SKILL.md",
+      "computedHash": "8d3ee3e41162df5a3b6b8b8392cb350369731684c10ed0702377709285431dc5"
+    },
+    "alibabacloud-emr-cluster-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/emapreduce/alibabacloud-emr-cluster-manage/SKILL.md",
+      "computedHash": "1c606e2930c998b468be9a6f58968c6ce3af1c3dbed74aaf5d42b34ffc5b06c1"
+    },
+    "alibabacloud-emr-spark-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/emapreduce/alibabacloud-emr-spark-manage/SKILL.md",
+      "computedHash": "8f8199773af4f82c5fa785ad647dc436781fe0c26df11c72cb3d7918ffdf7bf6"
+    },
+    "alibabacloud-emr-starrocks-assistant": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/emapreduce/alibabacloud-emr-starrocks-assistant/SKILL.md",
+      "computedHash": "5946cb7db4d29aeb217834f51133729e9d8440800eed7749eb1b99383e701c3a"
+    },
+    "alibabacloud-emr-starrocks-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/emapreduce/alibabacloud-emr-starrocks-manage/SKILL.md",
+      "computedHash": "3be25c4b9e052e1781cd314b3a3777528a176a3641c4102b499de8d214afa5fb"
+    },
+    "alibabacloud-esa-pages-deploy": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/netcdn/dcdn/alibabacloud-esa-pages-deploy/SKILL.md",
+      "computedHash": "daefba60f9929835c58956798999884ac80cceb64997d72961e547485601cec9"
+    },
+    "alibabacloud-find-skills": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/developertools/solutions/alibabacloud-find-skills/SKILL.md",
+      "computedHash": "5fb7be644e01226b4c8db68161fd1e60c552183bc2843d7d3ef8acbe9936f827"
+    },
+    "alibabacloud-flink-instance-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/sc/alibabacloud-flink-instance-manage/SKILL.md",
+      "computedHash": "0bf86f17b46aa47df55cb8f71e657892e95aa62fb24e6a5bd5893b6eff155a75"
+    },
+    "alibabacloud-flink-workspace-ops": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/sc/alibabacloud-flink-workspace-ops/SKILL.md",
+      "computedHash": "a39192b09b329bc5e9763d501f2eee756a3946d27fcc57d2c25e831f82cf3b05"
+    },
+    "alibabacloud-governance-evaluation-report": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrationom/governance/alibabacloud-governance-evaluation-report/SKILL.md",
+      "computedHash": "df5fcd6bacf403287c6908b5685fe7b6038a93c6902580b42a63301912e6fd5d"
+    },
+    "alibabacloud-hologres-instance-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/hologram/alibabacloud-hologres-instance-manage/SKILL.md",
+      "computedHash": "43d95f73075e9f9cbc67fc7069a78fdb67dd357c12e55747fd3da746a1ecb668"
+    },
+    "alibabacloud-icpba-sucessdata-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/doweb/companyreg/alibabacloud-icpba-sucessdata-query/SKILL.md",
+      "computedHash": "3cd566321ae21feb54679be7d13fbc7dcbd7389f1292ea62bd43237e0a80cdbd"
+    },
+    "alibabacloud-iqs-search": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/entcmc/alibababcp/alibabacloud-iqs-search/SKILL.md",
+      "computedHash": "af376c2bd46dca74e7ea940ae7754b601bcf082a69fee0bd810d0bb40073fb55"
+    },
+    "alibabacloud-iqs-weather-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/others/solutions/alibabacloud-iqs-weather-query/SKILL.md",
+      "computedHash": "08aa99d1c0efb97603413a9a01b727f3eea46a4a0300dfc00567170e90ef4d9f"
+    },
+    "alibabacloud-kms-secret-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/kms/alibabacloud-kms-secret-manage/SKILL.md",
+      "computedHash": "75bef089ba309df50035d61b94aecd7bc46ad6e241885ee62672e1ce28a53108"
+    },
+    "alibabacloud-lindorm-agent-skill": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/hitsdb/alibabacloud-lindorm-agent-skill/SKILL.md",
+      "computedHash": "6d517e3fe18b14c9a4fac225e2311ba44e0180681dbf46e4b8df68c88b0a5458"
+    },
+    "alibabacloud-liverecord-diagnosis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mediaservices/live/alibabacloud-liverecord-diagnosis/SKILL.md",
+      "computedHash": "14f115cb107332b7d6ca65da98993ada91f52b0e60bae2e1570cc423a5fb5cac"
+    },
+    "alibabacloud-maxcompute-migration-service": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/odps/alibabacloud-maxcompute-migration-service/SKILL.md",
+      "computedHash": "17c14db6f1dd8c436c6385252b5a20466b3608e81127ade82fb90362a1e0730a"
+    },
+    "alibabacloud-milvus-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/milvus/alibabacloud-milvus-manage/SKILL.md",
+      "computedHash": "dbe2a7a557587d9ee6ec61e26a286908c97c8c1916cd09dca888525f4f794c42"
+    },
+    "alibabacloud-mongodb-instances-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/mongodb/alibabacloud-mongodb-instances-manage/SKILL.md",
+      "computedHash": "b7ec9f6ba7929efb56f944a5c32b3ea588a595529a9b4033c318d0e505d47af3"
+    },
+    "alibabacloud-network-reachability-analysis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/netcdn/netana/alibabacloud-network-reachability-analysis/SKILL.md",
+      "computedHash": "99f956b28f9d1c445462c5abc0e522a9946f8231370f4c0474d3407afea4168c"
+    },
+    "alibabacloud-nginx-ingress-to-api-gateway": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/middleware/apigateway/alibabacloud-nginx-ingress-to-api-gateway/SKILL.md",
+      "computedHash": "f28c49ab3e25f7442b07e2a366e9f67b8039c23be29087dbcde8cea3f329bb0a"
+    },
+    "alibabacloud-odps-cost-analysis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/odps/alibabacloud-odps-cost-analysis/SKILL.md",
+      "computedHash": "7d3508262d762786c29ba14c621991883c2d89f86016174c3595624d794eeabf"
+    },
+    "alibabacloud-odps-information-schema": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/odps/alibabacloud-odps-information-schema/SKILL.md",
+      "computedHash": "b253f04c6be969765cef9f09ed8dc667d0e2d1940b472ff8dadddacdd2184188"
+    },
+    "alibabacloud-odps-maxframe-coding": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/odps/alibabacloud-odps-maxframe-coding/SKILL.md",
+      "computedHash": "fae497f70a6f7485256dff8a04a8ddd9c9e931e382aaa44df52cd8b35b5decd5"
+    },
+    "alibabacloud-odps-project-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/odps/alibabacloud-odps-project-manage/SKILL.md",
+      "computedHash": "e6036dfa74de85289b51391c7df29f2506a02bf20ee0329b4dc93a06fe574de7"
+    },
+    "alibabacloud-odps-quota-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/odps/alibabacloud-odps-quota-manage/SKILL.md",
+      "computedHash": "42b8c7d8cdbabd830e95204efa1a2491c24f3f502a2ab07ef26f2e856c43e66c"
+    },
+    "alibabacloud-odps-sql-generation": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/odps/alibabacloud-odps-sql-generation/SKILL.md",
+      "computedHash": "b83dafc118c063a1e49633c12912723f54bff7526b722fb19fe636e9571dd0c1"
+    },
+    "alibabacloud-oos-template-generation": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrationom/oos/alibabacloud-oos-template-generation/SKILL.md",
+      "computedHash": "9759d733c7d802ab392991bb0630e158d7f0c49dca213f34381d9667890289ac"
+    },
+    "alibabacloud-openclaw-ecs-dingtalk": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/developertools/solutions/alibabacloud-openclaw-ecs-dingtalk/SKILL.md",
+      "computedHash": "eae694948c896816eb00df0ae26748586f0b7bd5a1dd282129a48a6a89420bc7"
+    },
+    "alibabacloud-openclaw-skill-security-scan": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/riskmanagement/alibabacloud-openclaw-skill-security-scan/SKILL.md",
+      "computedHash": "22049e1316059cb9687d75c2fbd4b576d681f46e17552a3e11d577cc5912e659"
+    },
+    "alibabacloud-opensearch-app-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/opensearch/alibabacloud-opensearch-app-manage/SKILL.md",
+      "computedHash": "eb6a65ad852d03dba75d82ca0b0b6da1ca01979c2844db841413830d94490334"
+    },
+    "alibabacloud-oss-manage-cron-upload": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/oss/alibabacloud-oss-manage-cron-upload/SKILL.md",
+      "computedHash": "95635f585b9bb0af43aea473e9c1754be3bd39e9fba03cbbb7019550de0ec1c9"
+    },
+    "alibabacloud-oss-manage-metaquery": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/oss/alibabacloud-oss-manage-metaquery/SKILL.md",
+      "computedHash": "4e2c55b4596d8ca94b9a48e5fcd0af9a6991e84dc79912f31ca0f069fccbfa22"
+    },
+    "alibabacloud-oss-manage-network-probe": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/oss/alibabacloud-oss-manage-network-probe/SKILL.md",
+      "computedHash": "c5ec72d2006292aa4acc69c90dac529ebb422a09e7a07eeed07133dda0e9cfa9"
+    },
+    "alibabacloud-oss-media-process": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/oss/alibabacloud-oss-media-process/SKILL.md",
+      "computedHash": "b1c135bbb13db25dde09d7d29d08490ca737bce14e516741928cbbf29d757b72"
+    },
+    "alibabacloud-pai-dlc-job": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/learn/alibabacloud-pai-dlc-job/SKILL.md",
+      "computedHash": "b673563c42f65570488ad611ab53834a28053c1fbadfca4415fe8945b95979df"
+    },
+    "alibabacloud-pai-dlc-job-diagnostics": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/learn/alibabacloud-pai-dlc-job-diagnostics/SKILL.md",
+      "computedHash": "f3e671733a5ecf5185d34097400596d39bc146c95d834b619f03ad561d1eeb6e"
+    },
+    "alibabacloud-pai-dsw-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/learn/alibabacloud-pai-dsw-manage/SKILL.md",
+      "computedHash": "fccdb735b7145c09ceb3c56281ec5048a2187129f2737f760cf3e654489e88af"
+    },
+    "alibabacloud-pai-feature-store-featuredb-usage-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/learn/alibabacloud-pai-feature-store-featuredb-usage-query/SKILL.md",
+      "computedHash": "1f7bfb04da3d5f302307fe80892e4fde832689d67df7aab09c8042dae3ab388d"
+    },
+    "alibabacloud-pai-node-management": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/learn/alibabacloud-pai-node-management/SKILL.md",
+      "computedHash": "e9166b71707120205137747241667fdba044a9867b9d9a3794f993d705709956"
+    },
+    "alibabacloud-pai-quota-management": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/learn/alibabacloud-pai-quota-management/SKILL.md",
+      "computedHash": "d30a7fc0f22f4c58e79e892c92cbd7d04662a551618c561eafa56114b937a784"
+    },
+    "alibabacloud-pai-rec-diagnosis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/learn/alibabacloud-pai-rec-diagnosis/SKILL.md",
+      "computedHash": "6400c8c250a12433468a7fc944b78ac7c7bcd2d78f7f41546cb78ee76eca9a25"
+    },
+    "alibabacloud-pai-workspace-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/aiml/learn/alibabacloud-pai-workspace-manage/SKILL.md",
+      "computedHash": "9e9d817abf11fd8d8efbac5627c8d28dd1c13f638d811b64b73f6e79678e2b6f"
+    },
+    "alibabacloud-pds-intelligent-workspace": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/pds/alibabacloud-pds-intelligent-workspace/SKILL.md",
+      "computedHash": "2375929ef4fe018a706575949b706b98731cde979f2c6daa9359fd9a88da4b5c"
+    },
+    "alibabacloud-pds-multimodal-search": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/pds/alibabacloud-pds-multimodal-search/SKILL.md",
+      "computedHash": "7c1ec79cbf52627d3a19b1007e2cab101808422d9221b6bd7513b184393c01e7"
+    },
+    "alibabacloud-polardb-ai-assistant": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/polardb/alibabacloud-polardb-ai-assistant/SKILL.md",
+      "computedHash": "c7247e7750b2cf27ace087fd6d8bc2c5148fa9532d9a604025a160edef4df937"
+    },
+    "alibabacloud-polardbx-ai-assistant": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/drds/alibabacloud-polardbx-ai-assistant/SKILL.md",
+      "computedHash": "16b4b0ce15047e8bc8234fe7750e73d88f62d5b7049b2cff836cf26f8f2b1660"
+    },
+    "alibabacloud-polardbx-sql": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/drds/alibabacloud-polardbx-sql/SKILL.md",
+      "computedHash": "f09aac275a46b190359123c440cf0598b046f4fb471bf22c60ca4dbf49e611a9"
+    },
+    "alibabacloud-pts-ops": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/middleware/pts/alibabacloud-pts-ops/SKILL.md",
+      "computedHash": "39fff6162deae7380a94800f6d80e816dd0c17029c7d617a8a96280bc4e36ef5"
+    },
+    "alibabacloud-pts-task": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/playbooks/optdes/alibabacloud-pts-task/SKILL.md",
+      "computedHash": "5a668ac4cf778368208b3b2e8bd3f1f4527e80a7c6d9fb7a21a209732e70e87b"
+    },
+    "alibabacloud-quickbi-smartq": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/analyticscomputing/quickbi/alibabacloud-quickbi-smartq/SKILL.md",
+      "computedHash": "e3e15cde61671c319e9d2c1eb30f6243ed7a3f2225f3966cd0c01e3417670986"
+    },
+    "alibabacloud-ram-permission-diagnose": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrationom/ram/alibabacloud-ram-permission-diagnose/SKILL.md",
+      "computedHash": "b0bc0be3065869d451ceb2c1edb97ac6ee91561bdcef17c24b31f224fa97db00"
+    },
+    "alibabacloud-rds-copilot": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/rds/alibabacloud-rds-copilot/SKILL.md",
+      "computedHash": "08a9455023500f0dfd6f3058f6ff5340e9b835f2acfdac8687a88ec6e02834d6"
+    },
+    "alibabacloud-resourcecenter-search": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrationom/entconsole/alibabacloud-resourcecenter-search/SKILL.md",
+      "computedHash": "c4a515f0ae70bd6859951d9cc649e1a5a9d7074a13444fc331dee073ff54a22f"
+    },
+    "alibabacloud-safety-checker": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/lvwang/alibabacloud-safety-checker/SKILL.md",
+      "computedHash": "dcca06b246d8bc436758fd11a7f8568ddd193bc2034418fec4e42a9c3161b852"
+    },
+    "alibabacloud-sas-alert-handler": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/sas/alibabacloud-sas-alert-handler/SKILL.md",
+      "computedHash": "a32d433ebc798cdb64d99f464be94e3d2d02df452f0ff4883f5bbb65246aa852"
+    },
+    "alibabacloud-sas-incident-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/sas/alibabacloud-sas-incident-manage/SKILL.md",
+      "computedHash": "f9e9d1734367459d9aac896c30bba265168d2e262d0f8631698fe982748351d9"
+    },
+    "alibabacloud-sas-install-agent": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/sas/alibabacloud-sas-install-agent/SKILL.md",
+      "computedHash": "0dae3f33e40ad48cc2e56f4b47dd231c5bbfe2adf50dfb824666ec8840aa5876"
+    },
+    "alibabacloud-sas-multiaccount-manage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/sas/alibabacloud-sas-multiaccount-manage/SKILL.md",
+      "computedHash": "ae6bff74cd633c9d48187945035063102f534c243039b48745d10fd38aeba6aa"
+    },
+    "alibabacloud-sas-openclaw-security": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/sas/alibabacloud-sas-openclaw-security/SKILL.md",
+      "computedHash": "73e2327d9f09c965f55b1a9c1415b6ed7e3447c45b5a7158ebe66434367d8d64"
+    },
+    "alibabacloud-sas-overview": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/sas/alibabacloud-sas-overview/SKILL.md",
+      "computedHash": "e3137be9a55f27ee3825d62fa6b39f9e041e063e42d9395cd7acf2708ebb5792"
+    },
+    "alibabacloud-sls-index-config-management": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/sls/alibabacloud-sls-index-config-management/SKILL.md",
+      "computedHash": "b7d2b183d207304a05c3f471d0a57d8bdc956b59868502511a76d202dae123be"
+    },
+    "alibabacloud-sls-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/sls/alibabacloud-sls-query/SKILL.md",
+      "computedHash": "43337aa771b563ddbc800ae3c48e6439481a564325c5d272dba628f410f7874e"
+    },
+    "alibabacloud-smartag-pilot": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/netcdn/smartag/alibabacloud-smartag-pilot/SKILL.md",
+      "computedHash": "6457833921bc2970a113fe6c3398c3c3ebe0faa9ceaf87d39613ea566651738b"
+    },
+    "alibabacloud-sms-send-short-message": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/entcmc/dysms/alibabacloud-sms-send-short-message/SKILL.md",
+      "computedHash": "773d4833f9a1967bd611dddd82de0bf8147e81e8572b69fa49299c622c1e436e"
+    },
+    "alibabacloud-solution-deploy": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/developertools/solutions/alibabacloud-solution-deploy/SKILL.md",
+      "computedHash": "659d0862be92ff06bb84530d73a44a60d5006ccc5a7c8522b33db9b5d6409248"
+    },
+    "alibabacloud-starops-chat": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/middleware/starops/alibabacloud-starops-chat/SKILL.md",
+      "computedHash": "344b87eca9edd62064f2dddd282e3bfa9930615a443e6cbf48e847b2fec1c764"
+    },
+    "alibabacloud-sysom-diagnosis": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/computing/alinux/alibabacloud-sysom-diagnosis/SKILL.md",
+      "computedHash": "ff2e4971e9b3194563e75151ef07a8fe71e876d9d4d9027adea4a882e2ad59bd"
+    },
+    "alibabacloud-tablestore-agent-storage": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/ots/alibabacloud-tablestore-agent-storage/SKILL.md",
+      "computedHash": "d7ef9b43e0b9e8d712d2c51b1c398af98fe516c13a97da93a91e75bc732a36f8"
+    },
+    "alibabacloud-tablestore-openclaw-memory": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/ots/alibabacloud-tablestore-openclaw-memory/SKILL.md",
+      "computedHash": "a922cbb8900b7b7ba0fd3fbe441f349b99540b499fdf0870837a9afe9fb5d3a2"
+    },
+    "alibabacloud-tablestore-ops": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/storage/ots/alibabacloud-tablestore-ops/SKILL.md",
+      "computedHash": "1d3f15233c50c8610d63b2ef4ec5b6941f925c34afd69f8834f450847e4cba86"
+    },
+    "alibabacloud-tair-ai-assistant": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/kvstore/alibabacloud-tair-ai-assistant/SKILL.md",
+      "computedHash": "300dfec83fd62d3d0f803658f2250e468263c095dfafdc9a8d456ccee1e031b7"
+    },
+    "alibabacloud-tair-devtoolset": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/database/kvstore/alibabacloud-tair-devtoolset/SKILL.md",
+      "computedHash": "5a8ea1710b9a1015f3810367469186f29cc1212135a0ade6f3b2ae874f672d22"
+    },
+    "alibabacloud-tech-solution-animation-creation-auto-deploy": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/solutions/alibabacloud-tech-solution-animation-creation-auto-deploy/SKILL.md",
+      "computedHash": "dba43b6860aec40877bc6262135d314d5c395eeb3327ddbc0394110043b93334"
+    },
+    "alibabacloud-terraform-code-generation": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/developertools/solutions/alibabacloud-terraform-code-generation/SKILL.md",
+      "computedHash": "c288d192eac47a8d88e255e08629eaabf830380fd8f26c53a6f2f8e6bbac2299"
+    },
+    "alibabacloud-terraform-import": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrationom/solutions/alibabacloud-terraform-import/SKILL.md",
+      "computedHash": "551b81b8b2e6523eae5577224ce886fe5028e3ff75b059ea671f9b304ff1fa62"
+    },
+    "alibabacloud-video-editor": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mediaservices/ice/alibabacloud-video-editor/SKILL.md",
+      "computedHash": "61948399c46ffec932470f613bed1f507a68c145cd46ec028886d8e37023a3e5"
+    },
+    "alibabacloud-video-forge": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mediaservices/mts/alibabacloud-video-forge/SKILL.md",
+      "computedHash": "2fb7b39df769f0b52052fce43e86c465ed9acdda7de3d7476869dd56afdb171c"
+    },
+    "alibabacloud-video-translation": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mediaservices/ice/alibabacloud-video-translation/SKILL.md",
+      "computedHash": "eb40309f5d34e0a386db35f86ebb697495bb4124a7c6a93ef33171d417556e18"
+    },
+    "alibabacloud-vms-smart-call-by-tts": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/entcmc/dyvms/alibabacloud-vms-smart-call-by-tts/SKILL.md",
+      "computedHash": "99c1de30262402a5094b4506edce4f3cd7da7caf22086802714a2c4e33c0a742"
+    },
+    "alibabacloud-waf-bot-management": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/waf/alibabacloud-waf-bot-management/SKILL.md",
+      "computedHash": "5a2c3328caff9ed7cee57fb53357263f821038657ce5df2d946daba6040e7298"
+    },
+    "alibabacloud-waf-checkresponse-intercept-query": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/waf/alibabacloud-waf-checkresponse-intercept-query/SKILL.md",
+      "computedHash": "55a17a4db43fa02aeac2999a39bc7a4ff390c2aff3c951d01720259e3f0e6ce8"
+    },
+    "alibabacloud-waf-cname-config-export": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/waf/alibabacloud-waf-cname-config-export/SKILL.md",
+      "computedHash": "a16a05ff07fe778255a33342a89aff7f8d7c70bb147182ad7d554a934125b3c8"
+    },
+    "alibabacloud-waf-quick-showcase": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/waf/alibabacloud-waf-quick-showcase/SKILL.md",
+      "computedHash": "060cb67759cf5cb219cef703cb343ec2ba9fb79ad9d8aeed938b8aee870222ee"
+    },
+    "alibabacloud-waf-security-monitor": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security/waf/alibabacloud-waf-security-monitor/SKILL.md",
+      "computedHash": "8ad47603b434f65ce840d1b2f56ccd261d61a23b4664d4f2457a9c3226961e6f"
+    },
+    "alibabacloud-wxz-website-builder": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/doweb/website/alibabacloud-wxz-website-builder/SKILL.md",
+      "computedHash": "1721ad91d290a138108e726f3437a29f2ed79cd768c6bcfcca9e5385eba79ec2"
+    },
+    "alibabacloud-yike-storyboard": {
+      "source": "aliyun/alibabacloud-aiops-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mediaservices/yike/alibabacloud-yike-storyboard/SKILL.md",
+      "computedHash": "d81f71a739443ae165ef386eb513156696c4b65873e517fbb1074339981f08bd"
+    }
+  }
+}
