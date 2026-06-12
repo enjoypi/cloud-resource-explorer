@@ -74,6 +74,7 @@ TypeScript 5.x + ESM: Follow standard conventions
 - 临时调试脚本须放 packages/app 目录下运行（相对 import dist/ 需正确路径，/tmp 下会 ERR_MODULE_NOT_FOUND）
 - CSV 数值列带前导单引号（防 Excel 公式注入），解析须先 lstrip("'")
 - aliyun resourcemanager 命令须加 `--region cn-hangzhou --endpoint resourcemanager.aliyuncs.com`，否则 endpoint 解析失败；ListAccounts 返回结构为 Accounts.Account[]
+- CloudSSO profile 登录用 `aliyun configure --mode CloudSSO --profile <name>`（非 sso login）；configure list 显示 Valid 但 node SDK 读 STS 缓存仍可能 InvalidSecurityToken.Expired，实时调 API 走 CLI 更稳
 
 ### 常用命令
 ```bash
@@ -109,5 +110,7 @@ cd packages/app && ./collect.sh  # 简化脚本（常用操作封装）
 - 付款账号（非资源目录管理账号）用 billOwnerId 代查他账号返回空；自查（billOwnerId=undefined）即涵盖全部托管成员，无需逐个代查
 - DescribeInstanceBill 只返回有 CDN 消费的账号；用 QueryAccountBill（isGroupByProduct，覆盖全部托管账号）交叉验证可区分"未购 CDN"与"采集遗漏"
 - profile 须用财务托管的付款账号，用 invited 独立付费账号查不到任何托管账单
+- 账单反推用量仅够看趋势：海外流量与监控接口基本一致，但国内流量账单严重漏报；ACCOUNT_TOTAL 行多为"静态https请求数/实时日志采集条数"等非流量计费项，不计入流量 GB
+- 域名级真实用量须走 CDN 监控接口：DescribeUserDomains 列域名 + DescribeDomainTrafficData（Value 单位 bytes，数据点按北京时间聚合，16:00Z=次日0点）
 
 <!-- MANUAL ADDITIONS END -->
